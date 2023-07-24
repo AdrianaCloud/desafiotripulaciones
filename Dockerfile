@@ -16,5 +16,6 @@ RUN cd client && npm install
 EXPOSE 5000
 EXPOSE 3000
 
+ENV NODE_ENV=production
 # Start client and server apps
 CMD ["sh", "-c", "cd server && npm start & cd client && npm start"]
