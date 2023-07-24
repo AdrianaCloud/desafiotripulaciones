@@ -3,7 +3,6 @@ const path = require('path');
 require('dotenv').config()
 
 const app = express();
-app.set('trust proxy', true);
 app.use(express.json({ extended: false }));
 
 app.get("/test", (req, res) => {
@@ -21,5 +20,6 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 const PORT = process.env.PORT || 5000;
+const host = process.env.HOST || '0.0.0.0';
 
 app.listen(PORT, () => console.log(`Server started port ${PORT}`));
