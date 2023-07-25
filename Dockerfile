@@ -25,4 +25,4 @@ EXPOSE 3000
 EXPOSE 5000
 
 # Start both client and server applications
-CMD ["sh", "-c", "cd server && npm run deploy"]
+CMD ["sh", "-c", "cd server && npm start & cd client && npm start"]

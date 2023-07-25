@@ -17,4 +17,6 @@ steps:
   - '--image=gcr.io/$PROJECT_ID/desafiotripulaciones/$BRANCH_NAME:$SHORT_SHA'
   - '--region=europe-west1'
   - '--platform=managed'
+  - '--port=5000'
+  - '--port=3000'
   - '--allow-unauthenticated'
