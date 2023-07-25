@@ -3,7 +3,7 @@ FROM node:20
 WORKDIR /app
 
 # Set NODE_ENV to "production"
-# ENV NODE_ENV=production
+ENV NODE_ENV=production
 
 # Copy server and client package.json and package-lock.json files
 COPY server/package.json server/package-lock.json ./server/
@@ -12,6 +12,8 @@ COPY client/package.json client/package-lock.json ./client/
 # Install dependencies for both server and client
 RUN cd server && npm install & cd ..
 RUN cd client && npm install
+RUN npm build client
+RUN cd ..
 
 # Copy the server and client application files
 COPY server ./server
