@@ -1,9 +1,9 @@
-FROM node:20
+FROM node:20-alpine
 
 WORKDIR /app
 
 # Set NODE_ENV to "production"
-ENV NODE_ENV=production
+ENV NODE_ENV='production'
 
 # Copy server and client package.json and package-lock.json files
 COPY server/package*.json ./server/
@@ -25,4 +25,4 @@ EXPOSE 3000
 EXPOSE 5000
 
 # Start both client and server applications
-CMD ["npm", "run", "deploy"]
+CMD ["sh", "-c", "cd server && npm run deploy"]
