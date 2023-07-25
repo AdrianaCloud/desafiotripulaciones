@@ -10,8 +10,8 @@ COPY server/package.json server/package-lock.json ./server/
 COPY client/package.json client/package-lock.json ./client/
 
 # Install dependencies for both server and client
-RUN cd server && npm install --production & cd ..
-RUN cd client && npm install --production
+RUN cd server && npm install & cd ..
+RUN cd client && npm install
 RUN npm run build
 RUN cd ..
 
