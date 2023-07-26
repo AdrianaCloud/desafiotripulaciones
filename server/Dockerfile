@@ -5,13 +5,13 @@ FROM node:18-alpine as backend
 WORKDIR /app
 
 # Copy the package.json and package-lock.json to the container
-COPY ./server/package*.json ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
 # Copy the rest of the backend code to the container
-COPY ./server .
+COPY . .
 
 # Expose the port your Node.js application listens on (port 5000 in this case)
 EXPOSE 5000
