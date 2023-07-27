@@ -202,9 +202,25 @@ const deleteUser = async (req, res) => {
 }
 
 // GET (Gets all users in DDBB) -> http://localhost:5000/api/users
+// GET (Gets user with specific email in DDBB) -> http://localhost:5000/api/users/santi@lmao.com
 const getUsers = async (req, res) => {
     try {
-        const data = await usersModels.getAllUsers()
+        let data
+
+        if(req.params.email) {
+
+            // Check if the email already exists
+            const existingUser = await usersModels.getUserByEmail(req.params.email);
+
+            if (existingUser.length < 1) {
+                return res.status(400).json({ message: "Email does not exist!" });
+            }
+
+            data = await usersModels.getUserByEmail(req.params.email)
+        } else {
+            data = await usersModels.getAllUsers()
+        }
+
         res.status(200).json(data)
     } catch (error) {
         res.status(400).json({error})
