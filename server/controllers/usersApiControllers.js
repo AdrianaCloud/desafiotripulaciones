@@ -83,6 +83,52 @@ const logOutUser = async (req, res) => {
     }
 }
 
+// PUT (Create a new user in DDBB) -> http://localhost:5000/api/users
+
+// {
+//     "user_name": "NuevoSanti",
+//     "email": "santi@lmao.com",
+//     "new_email": "nuevosanti@lmao.com"
+// }
+
+const updateUser = async (req, res) => {
+    const { email, new_email, user_name } = req.body
+    try {
+        const existingNewEmail = await usersModels.getUserByEmail(new_email)
+        
+        if(existingNewEmail.length > 0) {
+            return res.status(400).json({
+                msg: "Ya existe un usuario con ese email!"
+            })
+        }
+
+        const existingEmail = await usersModels.getUserByEmail(email)
+        
+        if(existingEmail.length < 1) {
+            return res.status(400).json({
+                msg: "No existe ningún usuario con este email!"
+            })
+        }
+
+        const userData = {
+            email,
+            new_email,
+            user_name
+        }
+
+        const data = await usersModels.updateUser(userData)
+
+        res.status(200).json({
+            msg: `Usuario ${email} actualizado a ${new_email} con nombre ${user_name}!`
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
 // POST (Create a new user in DDBB) -> http://localhost:5000/api/users/register
 
 // {
@@ -170,5 +216,6 @@ module.exports = {
     getUsers,
     logUser,
     logOutUser,
-    deleteUser
+    deleteUser,
+    updateUser
 }
