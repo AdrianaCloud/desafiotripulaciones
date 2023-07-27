@@ -22,13 +22,12 @@ steps:
       --region=europe-west1
       --platform=managed
       --allow-unauthenticated
-      --port=5000
-      --update-env-vars USERS_TABLE=$$USERS_TABLE"
+      --port=5000"
   ] 
 
   secretEnv: [
     'USERS_TABLE']
-    
+
 availableSecrets:
   secretManager:
     - versionName: projects/476114540331/secrets/USERS_TABLE/versions/latest
