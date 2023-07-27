@@ -48,6 +48,40 @@ const logUser = async (req, res) => {
     }
 }
 
+// POST (Logout an user in DDBB) -> http://localhost:5000/api/users/logout
+// {
+//     "email": "santi@lmao.com"
+// }
+
+const logOutUser = async (req, res) => {
+    const { email } = req.body
+
+    try {
+
+        const user = await usersModels.getUserByEmail(email)
+        
+        if(user.length < 1) {
+            return res.status(400).json({
+                msg: "No existe un usuario con ese email!"
+            })
+        }
+
+        await usersModels.logOutUser(email)
+
+        res.status(200)
+            .clearCookie('access_token')
+            .json({
+                msg: "Sesión cerrada!"
+            })
+            .end()
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
 // POST (Create a new user in DDBB) -> http://localhost:5000/api/users
 
 // {
@@ -101,5 +135,6 @@ const getUsers = async (req, res) => {
 module.exports = {
     createNewUser,
     getUsers,
-    logUser
+    logUser,
+    logOutUser
 }

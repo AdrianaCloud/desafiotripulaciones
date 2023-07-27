@@ -76,6 +76,29 @@ const logUser = async (email) => {
     }
 }
 
+const logOutUser = async (email) => {
+    try {
+        const queryOptions = {
+            keyFilename: key_path,
+            projectId: "tripulacionesgrupo5"
+        }
+
+        const bigquery = new BigQuery(queryOptions);
+        const options = {
+            query: usersQueries.updateUserLogState,
+            location: 'europe-west1',
+            params: {state: false, email: email}
+          };
+
+        const [job] = await bigquery.createQueryJob(options);
+        const [rows] = await job.getQueryResults();
+
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
 const registerUser = async (userData) => {
     const { id_user, user_name, email, password, registered_date } = userData
     try {
@@ -105,5 +128,6 @@ module.exports = {
     getAllUsers,
     getUserByEmail,
     registerUser,
-    logUser
+    logUser,
+    logOutUser
 }
