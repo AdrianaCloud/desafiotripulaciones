@@ -5,6 +5,6 @@ const usersApiRouter = express.Router();
 
 usersApiRouter.get('/', usersApiControllers.getUsers);
 usersApiRouter.post("/register", usersApiControllers.createNewUser);
-// usersApiRouter.post("/login", usersApiControllers.login);
+usersApiRouter.post("/login", usersApiControllers.logUser);
 
 module.exports = usersApiRouter;
