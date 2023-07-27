@@ -23,9 +23,10 @@ steps:
   - '--port=5000'
   - '--allow-unauthenticated'
   - '--update-env-vars USERS_TABLE=$$USERS_TABLE'
+
   secretEnv: [
     'USERS_TABLE']
 availableSecrets:
   secretManager:
-    - versionName: projects/476114540331/secrets/USERS_TABLE/version/latest
+    - versionName: projects/476114540331/secrets/USERS_TABLE/versions/latest
       env: USERS_TABLE
