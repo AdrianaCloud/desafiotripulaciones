@@ -48,7 +48,88 @@ const logUser = async (req, res) => {
     }
 }
 
-// POST (Create a new user in DDBB) -> http://localhost:5000/api/users
+// POST (Logout an user in DDBB) -> http://localhost:5000/api/users/logout
+// {
+//     "email": "santi@lmao.com"
+// }
+
+const logOutUser = async (req, res) => {
+    const { email } = req.body
+
+    try {
+
+        const user = await usersModels.getUserByEmail(email)
+        
+        if(user.length < 1) {
+            return res.status(400).json({
+                msg: "No existe un usuario con ese email!"
+            })
+        }
+
+        await usersModels.logOutUser(email)
+
+        res.status(200)
+            .set('Authorization', "")
+            .cookie('access_token', "")
+            .json({
+                msg: "Sesión cerrada!"
+            })
+            .end()
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
+// PUT (Create a new user in DDBB) -> http://localhost:5000/api/users
+
+// {
+//     "user_name": "NuevoSanti",
+//     "email": "santi@lmao.com",
+//     "new_email": "nuevosanti@lmao.com"
+// }
+
+const updateUser = async (req, res) => {
+    const { email, new_email, user_name } = req.body
+    try {
+        const existingNewEmail = await usersModels.getUserByEmail(new_email)
+        
+        if(existingNewEmail.length > 0) {
+            return res.status(400).json({
+                msg: "Ya existe un usuario con ese email!"
+            })
+        }
+
+        const existingEmail = await usersModels.getUserByEmail(email)
+        
+        if(existingEmail.length < 1) {
+            return res.status(400).json({
+                msg: "No existe ningún usuario con este email!"
+            })
+        }
+
+        const userData = {
+            email,
+            new_email,
+            user_name
+        }
+
+        const data = await usersModels.updateUser(userData)
+
+        res.status(200).json({
+            msg: `Usuario ${email} actualizado a ${new_email} con nombre ${user_name}!`
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
+// POST (Create a new user in DDBB) -> http://localhost:5000/api/users/register
 
 // {
 //     "user_name": "santi",
@@ -62,9 +143,9 @@ const createNewUser = async (req, res)=> {
     try {
         // Check if the email already exists
         const existingUser = await usersModels.getUserByEmail(email);
-        console.log(existingUser);
+
         if (existingUser.length > 0) {
-            return res.status(409).json({ message: "Email already exists" });
+            return res.status(400).json({ message: "Email already exists" });
         }
 
         const userData = {
@@ -88,10 +169,58 @@ const createNewUser = async (req, res)=> {
     }
 }
 
+// POST (Delete a user in DDBB) -> http://localhost:5000/api/users
+
+// {
+//     "email": "santi@lmao.com"
+// }
+
+
+const deleteUser = async (req, res) => {
+    const { email } = req.body
+    try {
+
+        // Check if the email already exists
+        const existingUser = await usersModels.getUserByEmail(email);
+
+        if (existingUser.length < 1) {
+            return res.status(400).json({ message: "Email does not exist!" });
+        }
+
+        const deletedUser = await usersModels.deleteUser(email)
+
+        res.status(200).json({
+            msg: "Usuario borrado correctamente",
+            deleted_user: existingUser
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
 // GET (Gets all users in DDBB) -> http://localhost:5000/api/users
+// GET (Gets user with specific email in DDBB) -> http://localhost:5000/api/users/santi@lmao.com
 const getUsers = async (req, res) => {
     try {
-        const data = await usersModels.getAllUsers()
+        let data
+
+        if(req.params.email) {
+
+            // Check if the email already exists
+            const existingUser = await usersModels.getUserByEmail(req.params.email);
+
+            if (existingUser.length < 1) {
+                return res.status(400).json({ message: "Email does not exist!" });
+            }
+
+            data = await usersModels.getUserByEmail(req.params.email)
+        } else {
+            data = await usersModels.getAllUsers()
+        }
+
         res.status(200).json(data)
     } catch (error) {
         res.status(400).json({error})
@@ -101,5 +230,8 @@ const getUsers = async (req, res) => {
 module.exports = {
     createNewUser,
     getUsers,
-    logUser
+    logUser,
+    logOutUser,
+    deleteUser,
+    updateUser
 }
