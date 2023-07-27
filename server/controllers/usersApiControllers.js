@@ -69,7 +69,8 @@ const logOutUser = async (req, res) => {
         await usersModels.logOutUser(email)
 
         res.status(200)
-            .clearCookie('access_token')
+            .set('Authorization', "")
+            .cookie('access_token', "")
             .json({
                 msg: "Sesión cerrada!"
             })
