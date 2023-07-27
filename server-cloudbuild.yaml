@@ -22,7 +22,7 @@ steps:
   - '--platform=managed'
   - '--port=5000'
   - '--allow-unauthenticated'
-  - '--update-env-vars USERS_TABLE=$$USERS_TABLE'
+  - '--update-env-vars USERS_TABLE=$USERS_TABLE'
 
   secretEnv: [
     'USERS_TABLE']
