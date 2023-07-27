@@ -12,13 +12,23 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/desafiotripulaciones/$BRANCH_NAME:$SHORT_SHA']
 
 # Deploy the Docker image to Cloud Run
+# Implementa la imagen en Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'run'
-  - 'deploy'
-  - 'backend-app'
-  - '--image=gcr.io/$PROJECT_ID/desafiotripulaciones/$BRANCH_NAME:$SHORT_SHA'
-  - '--region=europe-west1'
-  - '--platform=managed'
-  - '--port=5000'
-  - '--allow-unauthenticated'
+  entrypoint: bash
+  args: [
+    "-c",
+    "gcloud run deploy backend-app
+      --image=gcr.io/$PROJECT_ID/desafiotripulaciones/$BRANCH_NAME:$SHORT_SHA
+      --region=europe-west1
+      --platform=managed
+      --allow-unauthenticated
+      --port=5000"
+  ] 
+
+  secretEnv: [
+    'USERS_TABLE']
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/476114540331/secrets/USERS_TABLE/versions/latest
+      env: USERS_TABLE
