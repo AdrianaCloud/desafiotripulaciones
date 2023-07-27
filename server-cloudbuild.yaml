@@ -1,7 +1,10 @@
 steps:
 #Copy the key file into the working environment
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '$$BUCKET_PATH', 'server/']
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - 'gsutil cp $$BUCKET_PATH /server'
 
 # Build the Docker image
 - name: 'gcr.io/cloud-builders/docker'
