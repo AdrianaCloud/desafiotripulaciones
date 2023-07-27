@@ -1,85 +1,54 @@
-const pool = require('../utils/db_pgsql')
-const usersQueries = require('../queries/users.queries')
-const { BigQuery } = require('@google-cloud/bigquery');
-const { hashPassword, comparePasswords, generateToken } = require("../utils/authUtils");
+const usersModels = require('../models/users')
+const uuid = require('uuid');
+const { hashPassword } = require('../utils/authUtils');
 
-const key_path = "./keyBigQuery.json"
-// const register = async (req, res)=> {
-//     const { user_name, email, password } = req.body;
+// POST (Create a new user in DDBB) -> http://localhost:5000/api/users
 
-//     try {
-//         // Check if the email already exists
-//         const existingUser = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-//         if (existingUser.rows.length > 0) {
-//             return res.status(409).json({ message: "Email already exists" });
-//         }
-
-//         // Hash the password
-//         const hashedPassword = await hashPassword(password);
-
-//         // Insert the new user into the database
-//         const newUser = await pool.query(usersQueries.registerUser,
-//             [user_name, email, hashedPassword]
-//         );
-
-//         const userPayload = {
-//             id_user: newUser.rows[0].id_user,
-//             user_name: user_name,
-//             email: email
-//         }
-
-//         // Generate a JWT token
-//         const token = generateToken(userPayload);
-//         console.log(token);
-        
-//         res.status(201).json({
-//             msg: "User created successfully",
-//             user: newUser.rows[0]
-//         });
-//     } catch (error) {
-//         res.status(400).json({
-//             error
-//         })
-//     }
+// {
+//     "user_name": "santi",
+//     "email": "santi@lmao.com",
+//     "password": "holahola1"
 // }
 
-//Funciona
-const getUsers = async (req, res) => {
+const createNewUser = async (req, res)=> {
+    const { user_name, email, password } = req.body;
+
     try {
-        const queryOptions = {
-            keyFilename: key_path,
-            projectId: "tripulacionesgrupo5"
+        // Check if the email already exists
+        const existingUser = await usersModels.getUserByEmail(email);
+        console.log(existingUser);
+        if (existingUser.length > 0) {
+            return res.status(409).json({ message: "Email already exists" });
         }
 
-        const bigquery = new BigQuery(queryOptions);
+        const userData = {
+            id_user: uuid.v4(),
+            user_name: user_name,
+            email: email,
+            password: await hashPassword(password),
+            registered_date: /([0-9]+)-([0-9]+)-([0-9]+)/gm.exec(new Date().toJSON())[0]
+        }
 
-        const query = `SELECT * FROM tripulacionesgrupo5.app_dataset.la_santitable_test2`;
-
-        const options = {
-            query: query,
-            // Location must match that of the dataset(s) referenced in the query.
-            location: 'europe-west1',
-          };
-
-        // Run the query as a job
-        const [job] = await bigquery.createQueryJob(options);
-        console.log(`Job ${job.id} started.`);
-    
-        // Wait for the query to finish
-        const [rows] = await job.getQueryResults();
-    
-        // Print the results
-        console.log('Rows:');
-        rows.forEach(row => console.log(row));
-
-        res.status(200).json({
-            msg: rows
-        })
-    // client = await pool.connect()
-    // const data = await client.query(usersQueries.getUsers)
-    return data.rows
+        const data = await usersModels.registerUser(userData)
+        
+        res.status(201).json({
+            msg: "User created successfully",
+            user: userData
+        });
     } catch (error) {
-        console.log(error);
+        res.status(400).json({
+            error
+        })
+    }
+}
+
+// GET (Gets all users in DDBB) -> http://localhost:5000/api/users
+const getUsers = async (req, res) => {
+    try {
+        const data = await usersModels.getAllUsers()
+        res.status(200).json(data)
+    } catch (error) {
+        res.status(400).json({error})
     }
 }
 
@@ -96,7 +65,7 @@ const getUsers = async (req, res) => {
     
 
 module.exports = {
-    // register,
+    createNewUser,
     getUsers,
     // login
 }
