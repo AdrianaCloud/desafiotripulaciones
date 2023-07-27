@@ -1,6 +1,52 @@
 const usersModels = require('../models/users')
 const uuid = require('uuid');
-const { hashPassword } = require('../utils/authUtils');
+const { hashPassword, comparePasswords, generateToken } = require('../utils/authUtils');
+
+// POST (Log an user in DDBB) -> http://localhost:5000/api/users/login
+// {
+//     "email": "santi@lmao.com",
+//     "password": "holahola1"
+// }
+
+const logUser = async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+
+        const user = await usersModels.getUserByEmail(email)
+        
+        if(user.length < 1) {
+            return res.status(400).json({
+                msg: "No existe un usuario con ese email!"
+            })
+        }
+
+        const passwordMatch = await comparePasswords(password, user[0].password)
+
+        if(passwordMatch == false) {
+            return res.status(400).json({
+                msg: "Contraseña incorrecta"
+            })
+        }
+
+        await usersModels.logUser(email)
+
+        const token = generateToken({ user_name: user[0].user_name, email: email, role: user[0].role });
+        res.status(200)
+            .set('Authorization', `Bearer ${token}`)
+            .cookie('access_token', token)
+            .json({
+                msg: "Usuario autenticado!",
+                token: token
+            })
+            .send()
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
 
 // POST (Create a new user in DDBB) -> http://localhost:5000/api/users
 
@@ -37,7 +83,7 @@ const createNewUser = async (req, res)=> {
         });
     } catch (error) {
         res.status(400).json({
-            error
+            msg: error.message
         })
     }
 }
@@ -52,20 +98,8 @@ const getUsers = async (req, res) => {
     }
 }
 
-// const  login = async (req, res) => {
-//     const { email, password } = req.body
-
-//     try {
-//         const client = await pool.connect()
-
-//     } catch (error) {
-        
-//     }
-//     }
-    
-
 module.exports = {
     createNewUser,
     getUsers,
-    // login
+    logUser
 }
