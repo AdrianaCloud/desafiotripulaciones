@@ -83,7 +83,7 @@ const logOutUser = async (req, res) => {
     }
 }
 
-// POST (Create a new user in DDBB) -> http://localhost:5000/api/users
+// POST (Create a new user in DDBB) -> http://localhost:5000/api/users/register
 
 // {
 //     "user_name": "santi",
@@ -97,9 +97,9 @@ const createNewUser = async (req, res)=> {
     try {
         // Check if the email already exists
         const existingUser = await usersModels.getUserByEmail(email);
-        console.log(existingUser);
+
         if (existingUser.length > 0) {
-            return res.status(409).json({ message: "Email already exists" });
+            return res.status(400).json({ message: "Email already exists" });
         }
 
         const userData = {
@@ -123,6 +123,38 @@ const createNewUser = async (req, res)=> {
     }
 }
 
+// POST (Delete a user in DDBB) -> http://localhost:5000/api/users
+
+// {
+//     "email": "santi@lmao.com"
+// }
+
+
+const deleteUser = async (req, res) => {
+    const { email } = req.body
+    try {
+
+        // Check if the email already exists
+        const existingUser = await usersModels.getUserByEmail(email);
+
+        if (existingUser.length < 1) {
+            return res.status(400).json({ message: "Email does not exist!" });
+        }
+
+        const deletedUser = await usersModels.deleteUser(email)
+
+        res.status(200).json({
+            msg: "Usuario borrado correctamente",
+            deleted_user: existingUser
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            msg: error.message
+        })
+    }
+}
+
 // GET (Gets all users in DDBB) -> http://localhost:5000/api/users
 const getUsers = async (req, res) => {
     try {
@@ -137,5 +169,6 @@ module.exports = {
     createNewUser,
     getUsers,
     logUser,
-    logOutUser
+    logOutUser,
+    deleteUser
 }

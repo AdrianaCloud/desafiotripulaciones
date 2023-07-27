@@ -7,5 +7,6 @@ usersApiRouter.get('/', usersApiControllers.getUsers);
 usersApiRouter.post("/register", usersApiControllers.createNewUser);
 usersApiRouter.post("/login", usersApiControllers.logUser);
 usersApiRouter.post("/logout", usersApiControllers.logOutUser);
+usersApiRouter.delete("/", usersApiControllers.deleteUser);
 
 module.exports = usersApiRouter;

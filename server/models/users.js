@@ -99,6 +99,29 @@ const logOutUser = async (email) => {
     }
 }
 
+const deleteUser = async (email) => {
+    try {
+        const queryOptions = {
+            keyFilename: key_path,
+            projectId: "tripulacionesgrupo5"
+        }
+
+        const bigquery = new BigQuery(queryOptions);
+        const options = {
+            query: usersQueries.deleteUser,
+            location: 'europe-west1',
+            params: {email: email}
+          };
+
+        const [job] = await bigquery.createQueryJob(options);
+        const [rows] = await job.getQueryResults();
+
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
 const registerUser = async (userData) => {
     const { id_user, user_name, email, password, registered_date } = userData
     try {
@@ -129,5 +152,6 @@ module.exports = {
     getUserByEmail,
     registerUser,
     logUser,
-    logOutUser
+    logOutUser,
+    deleteUser
 }
