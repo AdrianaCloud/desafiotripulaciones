@@ -1,10 +1,7 @@
 steps:
 #Copy the key file into the working environment
 - name: 'gcr.io/cloud-builders/gsutil'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - 'gsutil cp $$BUCKET_PATH /server'
+  args: ['cp', 'gs://cloudbuild-bigquery-json/clave-bigquery-cloudbuild.json', 'server/']
 
 # Build the Docker image
 - name: 'gcr.io/cloud-builders/docker'
@@ -25,8 +22,3 @@ steps:
   - '--platform=managed'
   - '--port=5000'
   - '--allow-unauthenticated'
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/476114540331/secrets/SECRET_ACCESS_KEY/versions/latest
-      env: BUCKET_PATH
