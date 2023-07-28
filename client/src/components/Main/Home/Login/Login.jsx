@@ -1,6 +1,10 @@
 import React from "react";
 
 const Login = () => {
+  const handleLoginSubmit = () => {
+
+  }
+
   return <>
     <h2>Log in</h2>
     <form action="" className="auth-forms" onSubmit={handleLoginSubmit} id="login-form">

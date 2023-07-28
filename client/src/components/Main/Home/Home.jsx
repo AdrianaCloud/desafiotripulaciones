@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -11,13 +12,13 @@ const Home = () => {
       <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ASport_balls.svg&psig=AOvVaw27iWQExnsQQ9JxTpdIUA8L&ust=1690566434277000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDr_O-4r4ADFQAAAAAdAAAAABAE" alt="" />
     </section>
     <sections className="buttons">
-      <button>Consejos seguridad</button>
-      <button>Pronosticos meteorologicos</button>
-      <button>Mapa de ruta</button>
-      <button>alimentacion</button>
-      <button>Recordatorio de hidratación</button>
-      <button>Comunidad de apoyo</button>
-      <button>Recursos naturales</button>
+      <button className="nav-link"><Link to='/consejos-seguridad'>Consejos seguridad</Link></button>
+      <button className="nav-link"><Link to='/pronostico'>Pronosticos meteorologicos</Link></button>
+      <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
+      <button className="nav-link"><Link to='/alimentación'>alimentacion</Link></button>
+      <button className="nav-link"><Link to='/recordatoriohidratacion'>Recordatorio de hidratación</Link></button>
+      <button className="nav-link"><Link to='/foro'>Comunidad de apoyo</Link></button>
+      <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
     </sections>
 
     <section className="security-advice">
@@ -30,7 +31,7 @@ const Home = () => {
       <article>
         <h2>Pronostico y alertas meteorologicas</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/consejos-seguridad'>acceder</Link></button>
       </article>
     </section>
 
@@ -39,7 +40,7 @@ const Home = () => {
       <article>
         <h2>Mapa de rutas recomendadas</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/map'>acceder</Link></button>
       </article>
     </section>
 
@@ -48,12 +49,12 @@ const Home = () => {
       <article>
         <h2>adaptación y aclimatación</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/alimentacion'>acceder</Link></button>
       </article>
       <article>
         <h2>recordatorio de hidratación</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/recordatoriohidratacion'>acceder</Link></button>
       </article>
     </section>
 
@@ -62,22 +63,16 @@ const Home = () => {
       <article>
         <h2>Comunidad y apoyo</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/foro'>acceder</Link></button>
       </article>
     </section>
 
-    <section>
+    <section className="natural-resources">
+      <img src="" alt="" />
       <article>
-        <img src="" alt="" />
-        <h2>monitoreo de condiciones en tiempo real</h2>
+        <h2>Recursos naturales</h2>
         <p>texto</p>
-        <button>acceder</button>
-      </article>
-      <article>
-        <img src="" alt="" />
-        <h2>Recursos Naturales</h2>
-        <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/recursosnaturales'>acceder</Link></button>
       </article>
     </section>
 
@@ -94,7 +89,7 @@ const Home = () => {
     </section>
     <div>
       <div>
-        <button>NUEVO USUARIO</button>
+        <button className="nav-link"><Link to='/login'>NUEVO USUSARIO</Link></button>
         {/* icono */}
       </div>
       {/* ICONOS */}
