@@ -1,6 +1,28 @@
 const usersModels = require('../models/users')
 const uuid = require('uuid');
-const { hashPassword, comparePasswords, generateToken } = require('../utils/authUtils');
+const { hashPassword, comparePasswords, generateToken, generateRefreshToken } = require('../utils/authUtils');
+
+// POST (Refresh user's token) -> http://localhost:5000/api/users/token
+
+const refreshToken = async (req, res) => {
+
+    if(!req.cookies.access_token) {
+        return res.status(400).json({
+            msg: "Token no proveída!"
+        })
+    }
+
+    const newToken = generateRefreshToken(req.cookies.access_token)
+
+    res.status(200)
+            .set('Authorization', `Bearer ${newToken}`)
+            .cookie('access_token', newToken)
+            .json({
+                msg: "Token refrescado!",
+                new_token: newToken
+            })
+            .send()
+}
 
 // POST (Log an user in DDBB) -> http://localhost:5000/api/users/login
 // {
@@ -233,5 +255,6 @@ module.exports = {
     logUser,
     logOutUser,
     deleteUser,
-    updateUser
+    updateUser,
+    refreshToken
 }
