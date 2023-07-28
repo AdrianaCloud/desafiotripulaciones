@@ -1,0 +1,7 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+h1 {
+    color: $primary-color;
+    font-family: $montserrat;
+}
