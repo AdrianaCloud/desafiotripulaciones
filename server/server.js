@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 const usersApiRouter = require('./routes/usersApiRoutes')
+const itemsApiRouter = require('./routes/itemsApiRoutes')
 
 const app = express();
 app.use(express.json({ extended: false }));
@@ -11,6 +12,7 @@ app.use(cookieParser())
 
 //Routes 
 app.use("/api/users", usersApiRouter)
+app.use("/api/items", itemsApiRouter)
 
 //Middlewares
 app.use(bodyParser.json());
