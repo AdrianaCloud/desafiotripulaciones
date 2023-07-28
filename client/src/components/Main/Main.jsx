@@ -6,22 +6,53 @@ import Login from './Home/Login'
 import Map from './Map'
 import MyProfile from './MyProfile'
 import Forum from './Forum'
+import ProtectedRoutes from '../../utils/ProtectedRoutes/ProtectedRoutes';
+import RoleManager from '../../utils/RoleManager/RoleManager';
 
 const Main = () => {
   /* faltan las siguientes rutas y componentes:
 consejos de seguridad, pronostico, adaptacion y aclimatación, recordatorio de hidratacion, recursos naturales
 */
-
-  const [logged, setLogged] = useState(false);
-  const [role, setRole] = useState('');
+  const [logged, setLogged] = useState(true); //esta en true simplemente para pruebas, despues cambiar a false para que se cambie a true cuando el usuario este logeado
+  const [role, setRole] = useState('client'); //valor inicial de client esta solo para pruebas. Cambiar a string vacio al acabar pruebas
   return <>
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='register' element={<Register />} />
-      <Route path='login' element={<Login />} />
-      <Route path='map' element={<Map />} />
-      <Route path='myprofile' element={<MyProfile />} />
-      <Route path='foro' element={<Forum />} />
+      <Route path='Register' element={<Register />} />
+
+      <Route
+        path='login'
+        element={
+          <Login
+            logged={{ logged, setLogged }}
+            role={{ role, setRole }} />} />
+
+      <Route
+        path='map'
+        element={<ProtectedRoutes
+          component={<RoleManager
+            component={<Map />}
+            role={role}
+            allowedRoles={["client"]} />}
+          logged={logged} />} />
+
+      <Route
+        path='myprofile'
+        element={<ProtectedRoutes
+          component={<RoleManager
+            component={<MyProfile />}
+            role={role}
+            allowedRoles={["client"]} />}
+          logged={logged} />} />
+
+      <Route
+        path='foro'
+        element={<ProtectedRoutes
+          component={<RoleManager
+            component={<Forum />}
+            role={role}
+            allowedRoles={["client"]} />}
+          logged={logged} />} />
     </Routes>
   </>;
 };
