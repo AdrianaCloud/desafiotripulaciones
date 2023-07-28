@@ -11,7 +11,7 @@ const Home = () => {
       </article>
       <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ASport_balls.svg&psig=AOvVaw27iWQExnsQQ9JxTpdIUA8L&ust=1690566434277000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDr_O-4r4ADFQAAAAAdAAAAABAE" alt="" />
     </section>
-    <sections className="buttons">
+    <section className="buttons">
       <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
       <button className="nav-link"><Link to='/pronostico'>Pronosticos meteorologicos</Link></button>
       <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
@@ -19,7 +19,7 @@ const Home = () => {
       <button className="nav-link"><Link to='/recordatoriohidratacion'>Recordatorio de hidratación</Link></button>
       <button className="nav-link"><Link to='/foro'>Comunidad de apoyo</Link></button>
       <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
-    </sections>
+    </section>
 
     <section className="security-advice">
       <img src="" alt="" />

@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import Home from './Home/Home'
 import { Routes, Route } from "react-router-dom";
-import Home from './components/Main/Home'
-import Register from './components/Main/Home/Register'
-import Login from './components/Main/Home/Login'
-import Map from './components/Main/Map'
-import MyProfile from './components/Main/MyProfile'
-import Forum from './components/Main/Forum'
+import Register from './Home/Register'
+import Login from './Home/Login'
+import Map from './Map'
+import MyProfile from './MyProfile'
+import Forum from './Forum'
 
 const Main = () => {
   /* faltan las siguientes rutas y componentes:

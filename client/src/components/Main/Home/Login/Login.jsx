@@ -1,15 +1,16 @@
 import React from "react";
+import { axios } from 'axios'
 
 const Login = (props) => {
   const handleLogin = async () => {
     try {
-      const request = await axios({
-        method: 'post',
-        url: 'api/users/login',
-        data: { email, password }
-      });
-      props.logged.setLogged(true);
-      props.role.setRole(request.data.role);
+      // const request = await axios({
+      //   method: 'post',
+      //   url: 'api/users/login',
+      //   data: { email, password }
+      // });
+      // props.logged.setLogged(true);
+      // props.role.setRole(request.data.role);
       //La coocki se adhiere automatiamente a cualquier petición
 
     } catch (error) {
