@@ -8,7 +8,9 @@ import Forum from './components/Main/Forum'
 
 
 function App() {
-
+  /* faltan las siguientes rutas y componentes:
+  consejos de seguridad, pronostico, adaptacion y aclimatación, recordatorio de hidratacion, recursos naturales
+  */
   return (
     <Routes>
       <Route path='/' element={<Home />} />

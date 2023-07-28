@@ -23,6 +23,24 @@ const Register = () => {
       console.error("Error creating user:", error);
     }
   }
+
+  /*useEffect(() => {
+    const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    if (!emailValidation.test(email) && email.length > 0) {
+      setEmailMessage("Email must have a valid format");
+    } else {
+      setEmailMessage("");
+    }
+  }, [email])
+
+  useEffect(() => {
+    const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{9,}$/
+    if (!passwordValidation.test(password) && password.length > 0) {
+      setPasswordMessage("Password must contain lowecase, uppercase, digit and special character");
+    } else {
+      setPasswordMessage("");
+    }
+  }, [password])*/
   return <>
     <h2>Register</h2>
     <form action="" className="auth-forms" onSubmit={handleRegisterSubmit} id="register-form">

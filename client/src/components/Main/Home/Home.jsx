@@ -12,7 +12,7 @@ const Home = () => {
       <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ASport_balls.svg&psig=AOvVaw27iWQExnsQQ9JxTpdIUA8L&ust=1690566434277000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDr_O-4r4ADFQAAAAAdAAAAABAE" alt="" />
     </section>
     <sections className="buttons">
-      <button className="nav-link"><Link to='/consejos-seguridad'>Consejos seguridad</Link></button>
+      <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
       <button className="nav-link"><Link to='/pronostico'>Pronosticos meteorologicos</Link></button>
       <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
       <button className="nav-link"><Link to='/alimentación'>alimentacion</Link></button>
@@ -26,12 +26,12 @@ const Home = () => {
       <article>
         <h2>Consejos de seguridad</h2>
         <p>texto</p>
-        <button>acceder</button>
+        <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
       </article>
       <article>
         <h2>Pronostico y alertas meteorologicas</h2>
         <p>texto</p>
-        <button className="nav-link"><Link to='/consejos-seguridad'>acceder</Link></button>
+        <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
       </article>
     </section>
 
@@ -72,7 +72,7 @@ const Home = () => {
       <article>
         <h2>Recursos naturales</h2>
         <p>texto</p>
-        <button className="nav-link"><Link to='/recursosnaturales'>acceder</Link></button>
+        <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
       </article>
     </section>
 

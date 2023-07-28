@@ -4,7 +4,7 @@ const Login = () => {
   const handleLoginSubmit = () => {
 
   }
-
+  //const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   return <>
     <h2>Log in</h2>
     <form action="" className="auth-forms" onSubmit={handleLoginSubmit} id="login-form">
