@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 
 function App() {
 
-  return (
+  return <>
 
     <div className="App">
       <BrowserRouter>
@@ -15,7 +15,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-  );
+  </>
 }
 
 export default App;

@@ -37,7 +37,7 @@ consejos de seguridad, pronostico, adaptacion y aclimatación, recordatorio de h
           logged={logged} />} />
 
       <Route
-        path='myprofile'
+        path='miperfil'
         element={<ProtectedRoutes
           component={<RoleManager
             component={<MyProfile />}

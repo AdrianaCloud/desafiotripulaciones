@@ -6,7 +6,7 @@ const { hashPassword, comparePasswords, generateToken, generateRefreshToken } = 
 
 const refreshToken = async (req, res) => {
 
-    if(!req.cookies.access_token) {
+    if (!req.cookies.access_token) {
         return res.status(400).json({
             msg: "Token no proveída!"
         })
@@ -15,13 +15,13 @@ const refreshToken = async (req, res) => {
     const newToken = generateRefreshToken(req.cookies.access_token)
 
     res.status(200)
-            .set('Authorization', `Bearer ${newToken}`)
-            .cookie('access_token', newToken)
-            .json({
-                msg: "Token refrescado!",
-                new_token: newToken
-            })
-            .send()
+        .set('Authorization', `Bearer ${newToken}`)
+        .cookie('access_token', newToken)
+        .json({
+            msg: "Token refrescado!",
+            new_token: newToken
+        })
+        .send()
 }
 
 // POST (Log an user in DDBB) -> http://localhost:5000/api/users/login
@@ -36,8 +36,8 @@ const logUser = async (req, res) => {
     try {
 
         const user = await usersModels.getUserByEmail(email)
-        
-        if(user.length < 1) {
+
+        if (user.length < 1) {
             return res.status(400).json({
                 msg: "No existe un usuario con ese email!"
             })
@@ -45,7 +45,7 @@ const logUser = async (req, res) => {
 
         const passwordMatch = await comparePasswords(password, user[0].password)
 
-        if(passwordMatch == false) {
+        if (passwordMatch == false) {
             return res.status(400).json({
                 msg: "Contraseña incorrecta"
             })
@@ -81,8 +81,8 @@ const logOutUser = async (req, res) => {
     try {
 
         const user = await usersModels.getUserByEmail(email)
-        
-        if(user.length < 1) {
+
+        if (user.length < 1) {
             return res.status(400).json({
                 msg: "No existe un usuario con ese email!"
             })
@@ -117,16 +117,16 @@ const updateUser = async (req, res) => {
     const { email, new_email, user_name } = req.body
     try {
         const existingNewEmail = await usersModels.getUserByEmail(new_email)
-        
-        if(existingNewEmail.length > 0) {
+
+        if (existingNewEmail.length > 0) {
             return res.status(400).json({
                 msg: "Ya existe un usuario con ese email!"
             })
         }
 
         const existingEmail = await usersModels.getUserByEmail(email)
-        
-        if(existingEmail.length < 1) {
+
+        if (existingEmail.length < 1) {
             return res.status(400).json({
                 msg: "No existe ningún usuario con este email!"
             })
@@ -159,13 +159,17 @@ const updateUser = async (req, res) => {
 //     "password": "holahola1"
 // }
 
-const createNewUser = async (req, res)=> {
+const createNewUser = async (req, res) => {
+    console.log("first")
     const { user_name, email, password } = req.body;
-
+    if (!user_name || !email || !password) {
+        return res.status(400).json({ message: "All fields are required." });
+    }
+    console.log(req.body);
     try {
         // Check if the email already exists
         const existingUser = await usersModels.getUserByEmail(email);
-
+        console.log(existingUser)
         if (existingUser.length > 0) {
             return res.status(400).json({ message: "Email already exists" });
         }
@@ -179,7 +183,7 @@ const createNewUser = async (req, res)=> {
         }
 
         const data = await usersModels.registerUser(userData)
-        
+        console.log(data)
         res.status(201).json({
             msg: "User created successfully",
             user: userData
@@ -229,7 +233,7 @@ const getUsers = async (req, res) => {
     try {
         let data
 
-        if(req.params.email) {
+        if (req.params.email) {
 
             // Check if the email already exists
             const existingUser = await usersModels.getUserByEmail(req.params.email);
@@ -245,7 +249,7 @@ const getUsers = async (req, res) => {
 
         res.status(200).json(data)
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 }
 
