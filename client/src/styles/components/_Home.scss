@@ -25,10 +25,7 @@ p {
 }
 
 button {
-    border: none;
-    background-color: $secondary-light-color;
-    padding: 10px 15px;
-    border-radius: 20px;
+    @include button
 }
 
 .welcome {

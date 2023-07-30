@@ -8,6 +8,8 @@ import MyProfile from './MyProfile'
 import Forum from './Forum'
 import ProtectedRoutes from '../../utils/ProtectedRoutes/ProtectedRoutes';
 import RoleManager from '../../utils/RoleManager/RoleManager';
+import UserForm from './UserForm/UserForm';
+import WeatherForecast from './WeatherForecast'
 
 const Main = () => {
   /* faltan las siguientes rutas y componentes:
@@ -50,6 +52,24 @@ consejos de seguridad, pronostico, adaptacion y aclimatación, recordatorio de h
         element={<ProtectedRoutes
           component={<RoleManager
             component={<Forum />}
+            role={role}
+            allowedRoles={["client"]} />}
+          logged={logged} />} />
+
+      <Route
+        path='eltiempo'
+        element={<ProtectedRoutes
+          component={<RoleManager
+            component={<WeatherForecast />}
+            role={role}
+            allowedRoles={["client"]} />}
+          logged={logged} />} />
+
+      <Route
+        path='cuestionario'
+        element={<ProtectedRoutes
+          component={<RoleManager
+            component={<UserForm />}
             role={role}
             allowedRoles={["client"]} />}
           logged={logged} />} />

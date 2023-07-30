@@ -4,3 +4,10 @@
     align-items: center;
     width: 50%;
 }
+
+@mixin button {
+    border: none;
+    background-color: $secondary-light-color;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
