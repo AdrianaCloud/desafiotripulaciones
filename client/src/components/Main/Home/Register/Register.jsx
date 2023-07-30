@@ -5,9 +5,20 @@ const Register = () => {
   const [registerData, setRegisterData] = useState({});
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
+
+  // Generates custom error message below search input
+  const newError = (errMessage) => {
+    setErrorMessage(errMessage)
+
+    setTimeout(() => {
+      setErrorMessage("")
+    }, 3000);
+  }
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const registerData = {
         "user_name": e.target.registerUserName.value,
@@ -21,7 +32,7 @@ const Register = () => {
         console.log("user has been registered");
       };
     } catch (error) {
-      console.error("Error creating user:", error);
+      newError(error.response.data.message)
     };
   };
 
@@ -57,6 +68,10 @@ const Register = () => {
         {passwordMessage && <p className="error-message">{passwordMessage}</p>}
         <button type="submit" className="form-btn">Register</button>
       </form>
+
+      {/* Displays error message */}
+      {errorMessage.length ? <p className="error">{errorMessage}</p> : <></>}
+
     </div>
   );
 };

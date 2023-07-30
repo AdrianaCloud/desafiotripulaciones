@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Map from "./Map";
+import MapView from "./MapView";
 
 describe("Map", () => {
   test("matches snapshot", () => {
