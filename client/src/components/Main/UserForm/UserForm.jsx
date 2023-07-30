@@ -24,13 +24,9 @@ const UserForm = () => {
 
   useEffect(() => {
     const completeProfile = async () => {
-      const token = "4654s6ds5d54sd45sd54"
       try {
         const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/complete-profile', userData, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-          }
+
         });
 
         console.log(response);

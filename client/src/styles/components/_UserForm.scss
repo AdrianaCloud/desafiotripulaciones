@@ -61,20 +61,14 @@
             select {
                 width: 100%;
                 min-width: 200px;
-                box-sizing: border-box;
-                /* Center the select elements horizontally */
             }
 
             input {
-                margin: $form-elements-margin;
                 min-width: 90%;
-                box-sizing: border-box;
             }
 
             .profile-btn {
-                margin: 40px 0px 100px;
                 min-width: 90%;
-                box-sizing: border-box;
             }
         }
     }
