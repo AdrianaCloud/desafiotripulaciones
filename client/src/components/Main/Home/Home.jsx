@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-
+import { IonIcon } from '@ionic/react';
+import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons'; // Correct import
 
 const Home = () => {
   return <>
     <section className="welcome">
       <article>
-        <h1>BIENVENIDO</h1>
-        <p>texto</p>
+        <h2>BIENVENIDO</h2>
+        <p>Enfrenta las olas de calor con seguridad y rendimiento. Regístrate ahora y únete a Sport Cool para disfrutar de una experiencia deportiva sin preocupaciones</p>
       </article>
-      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3ASport_balls.svg&psig=AOvVaw27iWQExnsQQ9JxTpdIUA8L&ust=1690566434277000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDr_O-4r4ADFQAAAAAdAAAAABAE" alt="" />
     </section>
     <section className="buttons">
       <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
@@ -21,79 +21,96 @@ const Home = () => {
       <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
     </section>
 
-    <section className="security-advice">
-      <img src="" alt="" />
-      <article>
-        <h2>Consejos de seguridad</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
-      </article>
-      <article>
-        <h2>Pronostico y alertas meteorologicas</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
-      </article>
-    </section>
-
-    <section className="routes">
-      <img src="" alt="" />
-      <article>
-        <h2>Mapa de rutas recomendadas</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/map'>acceder</Link></button>
-      </article>
-    </section>
-
-    <section className="adaptation">
-      <img src="" alt="" />
-      <article>
-        <h2>adaptación y aclimatación</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/alimentacion'>acceder</Link></button>
-      </article>
-      <article>
-        <h2>recordatorio de hidratación</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/recordatoriohidratacion'>acceder</Link></button>
-      </article>
-    </section>
-
-    <section className="comunity">
-      <img src="" alt="" />
-      <article>
-        <h2>Comunidad y apoyo</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/foro'>acceder</Link></button>
-      </article>
-    </section>
-
-    <section className="natural-resources">
-      <img src="" alt="" />
-      <article>
-        <h2>Recursos naturales</h2>
-        <p>texto</p>
-        <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
-      </article>
-    </section>
-
-    <section className="join-now">
-      <h3>UNETE AHORA</h3>
-      <div className="reviews">
+    <section className="articles">
+      <section className="security-advice">
         <article>
-          <p>Esta aplicacion es genial</p>
+          <h3>Consejos de seguridad</h3>
+          <p>Descubre nuestros consejos prácticos y especializados para protegerte durante olas de calor y asegurar un entrenamiento seguro y placentero.</p>
+          <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
         </article>
         <article>
-          <p>La aplicacion me ha cambiado la vida</p>
+          <h3>Pronóstico y alertas meteorologicas</h3>
+          <p>Informate con detalle sobre las temperaturas máximas y mínimas, niveles de humedad y recibe alertas para planificar tus entrenamientos al aire libre.</p>
+          <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
         </article>
-      </div>
+      </section>
+
+      <section className="routes">
+        <article>
+          <h3>Mapa de rutas recomendadas</h3>
+          <p>Encuentra los mejores caminos y zonas de sombra para que disfrutes del deporte sin preocupaciones en entornos frescos y protegidos.</p>
+          <button className="nav-link"><Link to='/map'>acceder</Link></button>
+        </article>
+      </section>
+
+      <section className="adaptation">
+        <article>
+          <h3>adaptación y aclimatación</h3>
+          <p>Aprende a adaptarte al calor gradualmente y optimiza tu rendimiento deportivo durante las olas de calor, sacando el máximo provecho de tu entrenamiento</p>
+          <button className="nav-link"><Link to='/alimentacion'>acceder</Link></button>
+        </article>
+        <article>
+          <h3>recordatorio de hidratación</h3>
+          <p>Recibe notificaciones personalizadas para mantener tu cuerpo bien hidratado y asegurar tu mejor desempeño deportivo.</p>
+          <button className="nav-link"><Link to='/recordatoriohidratacion'>acceder</Link></button>
+        </article>
+      </section>
+
+      <section className="comunity">
+        <article>
+          <h3>Comunidad y apoyo</h3>
+          <p>Conecta con otros deportistas apasionados, comparte tus experiencias y recibe apoyo para mantenerte motivado y alcanzar tus objetivos deportivos.</p>
+          <button className="nav-link"><Link to='/foro'>acceder</Link></button>
+        </article>
+      </section>
+
+      <section className="natural-resources">
+        <article>
+          <h3>Recursos naturales</h3>
+          <p>Accede a una selección de recursos que mejorarán tu práctica deportiva y te permitirán estar siempre preparado para tus entrenamientos</p>
+          <button className="nav-link"><Link to='/recursosnaturales'>acceder</Link></button>
+        </article>
+      </section>
     </section>
-    <div>
-      <div>
-        <button className="nav-link"><Link to='/login'>NUEVO USUSARIO</Link></button>
-        {/* icono */}
-      </div>
-      {/* ICONOS */}
-    </div>
+
+    <section className="footer">
+      <section className="join-now">
+        <h3>UNETE AHORA</h3>
+        <div className="reviews">
+          <article>
+            <IonIcon icon={peopleCircleOutline} className="icon" />
+            <div className="stars">
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, consequuntur explicabo minus porro incidunt praesentium, veritatis, expedita deserunt aperiam error sequi repellat. Obcaecati sint maxime, id vitae eos quaerat quas dicta, architecto quos a impedit culpa. Tenetur minus suscipit culpa possimus, voluptatem sunt ad quibusdam dolor quo impedit tempore asperiores? Dicta sint placeat, eum ea saepe ad necessitatibus exercitationem quis.</p>
+          </article>
+          <article>
+            <IonIcon icon={peopleCircleOutline} className="icon" />
+            <div className="stars">
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={star} className="icon star" />
+              <IonIcon icon={starHalf} className="icon star" />
+            </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam quasi quisquam sit soluta beatae. Dolorem maxime atque soluta temporibus. Temporibus nemo molestias porro maxime, laborum officiis praesentium! Ratione ullam deleniti, dolorem nesciunt voluptate numquam ipsam cumque, recusandae accusantium dicta natus.</p>
+          </article>
+        </div>
+      </section>
+      <section className="botom-register">
+        <button className="nav-link"><Link to='/register'>NUEVO USUSARIO</Link></button>
+        <div className="social-buttons">
+          <IonIcon icon={logoInstagram} className="icon" />
+          <IonIcon icon={logoFacebook} className="icon" />
+          <IonIcon icon={logoTwitter} className="icon" />
+          <IonIcon icon={arrowUp} className="icon arrowUp" />
+        </div>
+      </section>
+    </section>
   </>;
 };
 

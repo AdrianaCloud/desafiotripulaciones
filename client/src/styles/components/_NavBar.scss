@@ -1,0 +1,10 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+ul {}
+
+li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 60px;
+}

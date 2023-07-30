@@ -1,2 +1,47 @@
 @import '../utils/variables.scss';
 @import '../utils/mixings.scss';
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.button-container {
+    margin: 20px;
+
+    button {
+        border: none;
+        margin-left: 20px;
+    }
+}
+
+.list-icon {
+    visibility: hidden;
+}
+
+@media (max-width: 460px) {
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: -10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: center;
+        //centrarlo
+    }
+
+    .new-user {
+        font-size: 10px;
+    }
+
+    .list-icon {
+        visibility: visible;
+        scale: 3.5;
+        margin: 20px
+    }
+}
