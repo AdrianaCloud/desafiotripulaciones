@@ -3,7 +3,7 @@
 
 * {
     font-family: $nunito;
-    padding: 0px 5px;
+    background-color: $neutral ;
 }
 
 h1 {
@@ -13,6 +13,7 @@ h1 {
 
 h2 {
     text-align: center;
+    font-family: $montserrat;
 }
 
 a {
@@ -25,10 +26,7 @@ p {
 }
 
 button {
-    border: none;
-    background-color: $secondary-light-color;
-    padding: 10px 15px;
-    border-radius: 20px;
+    @include button
 }
 
 .welcome {

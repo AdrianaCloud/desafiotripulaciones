@@ -1,0 +1,26 @@
+/* @import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+.map-view {
+    margin: 0px auto;
+    border-radius: 20px;
+    border-radius: 5vw 5vw 5vw 5vw;
+}
+
+div.leaflet-control-zoom.leaflet-bar.leaflet-control {
+    border: none
+}
+
+a.leaflet-control-zoom-in {
+    background-color: $semantic-light-color;
+    border-radius: 5vw 5vw 5vw 5vw;
+}
+
+a.leaflet-control-zoom-in:focus {
+    background-color: $semantic-light-color;
+}
+
+a.leaflet-control-zoom-out {
+    background-color: $semantic-light-color;
+    border-radius: 5vw 5vw;
+} */

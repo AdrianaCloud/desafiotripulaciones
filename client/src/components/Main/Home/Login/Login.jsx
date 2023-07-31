@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
+import { IonIcon } from '@ionic/react';
+import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
+import { UserContext } from "../../../../context/userContext";
 
-const Login = (props) => {
+const Login = () => {
   const [loginAttempts, setLoginAttempts] = useState(0);
   const [isLoginBlocked, setLoginBlocked] = useState(false);
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
+
+  const { userData, setUserData } = useContext(UserContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,14 +43,13 @@ const Login = (props) => {
     }
 
     try {
-      // Perform login validation here using your preferred method (e.g., sending a request to the backend)
-
-      // Uncomment the following code to make the login request
-      /*
       const request = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/users/login", { email, password });
-      props.logged.setLogged(true);
-      props.role.setRole(request.data.role);
-      */
+      console.log(request.data)
+      setUserData({
+        logged: true,
+        role: "user"
+      })
+      console.log(userData);
 
       // If login is successful, reset loginAttempts and clear any login block
       setLoginAttempts(0);
@@ -68,9 +72,9 @@ const Login = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <h2>Log in</h2>
-      <img src="https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" alt="" />
+      <img src="./logo/lOGO.png" alt="" />
       <form action="" className="auth-forms" onSubmit={handleLogin} id="login-form">
         <input name="logInEmail" type="text" placeholder="Write your email" disabled={isLoginBlocked} />
         {emailMessage && <p className="error-message">{emailMessage}</p>}
@@ -79,6 +83,14 @@ const Login = (props) => {
         {isLoginBlocked && <p className="error-message">Login is blocked. Please try again after 5 minutes.</p>}
         <button type="submit" className="form-btn" disabled={isLoginBlocked}>Log in</button>
       </form>
+      <section className="sign-in-with">
+        <p>Iniciar sesíon con</p>
+        <section className="sign-in-btns">
+          <IonIcon icon={logoFacebook} className="sign-in-icon" />
+          <IonIcon icon={logoInstagram} className="sign-in-icon" />
+          <IonIcon icon={logoTwitter} className="sign-in-icon" />
+        </section>
+      </section>
     </div>
   );
 };

@@ -59,7 +59,12 @@ const logUser = async (req, res) => {
             .cookie('access_token', token)
             .json({
                 msg: "Usuario autenticado!",
-                token: token
+                token: token,
+                user: {
+                    user_name: user[0].user_name,
+                    email: user[0].email,
+                    role: user[0].role
+                }
             })
             .send()
 

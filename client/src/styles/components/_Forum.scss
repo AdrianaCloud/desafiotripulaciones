@@ -1,2 +1,54 @@
+// Import your variables here
 @import '../utils/variables.scss';
 @import '../utils/mixings.scss';
+
+// Forum component styles
+.post-publication-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    h2 {
+        color: $secondary-dark-color;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        border-radius: 8px;
+
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            background-color: transparent;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: $primary-color;
+            color: $neutral-white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+    }
+}

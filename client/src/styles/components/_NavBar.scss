@@ -1,7 +1,9 @@
 @import '../utils/variables.scss';
 @import '../utils/mixings.scss';
 
-ul {}
+ul {
+    margin-bottom: 200px;
+}
 
 li {
     list-style: none;
