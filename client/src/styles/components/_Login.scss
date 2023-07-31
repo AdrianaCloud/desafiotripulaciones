@@ -1,33 +1,66 @@
 @import '../utils/variables.scss';
 @import '../utils/mixings.scss';
 
-
-img {
-    width: 90vw;
-}
-
-form {
+.login-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
-}
-
-input {
-    border: none;
-    border-bottom: 1px solid $neutral-dark-grey;
-    margin: 20px 0 0 0;
-}
-
-.form-btn {
-    margin: 30px 0 160px 0;
-
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+    img {
+        width: 60vw;
+        margin-bottom: 100px;
+    }
+
+    input {
+        background-color: $neutral-light-grey;
+        border: none;
+        margin-bottom: 10px;
+        padding: 12px;
+        border-radius: 30px;
+        width: 80%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+
+
+
+    .form-btn {
+        margin: 30px 0 0px 0;
+        width: 80%;
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-in-with {
+        position: relative;
+        right: 60px;
+        margin-top: 30px;
+        font-size: 15px;
+        font-weight: bold;
+
+        p {
+            position: relative;
+            right: 15px;
+        }
+    }
+
+    .sign-in-icon {
+        margin-right: 20px;
+        font-size: 30px;
+    }
 }
+
 
 @media (min-width: 1000px) {
     img {

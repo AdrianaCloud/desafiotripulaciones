@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import logo from '../../../../../public/logo/LOGO.png'
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({});
@@ -57,9 +58,9 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
+    <div className="register-container">
       <h2>Register</h2>
-      <img src="https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" alt="" />
+      <img src="./logo/lOGO.png" alt="" />
       <form action="" className="auth-forms" onSubmit={handleRegisterSubmit} id="register-form">
         <input name="registerUserName" type="text" placeholder="Your user name" />
         <input name="registerEmail" type="email" placeholder="Place your email" onChange={handleEmailChange} />

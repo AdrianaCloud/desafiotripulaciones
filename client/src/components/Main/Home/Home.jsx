@@ -1,16 +1,22 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { IonIcon } from '@ionic/react';
-import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons'; // Correct import
+import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
+import Login from './Login/Login'
+
+
 
 const Home = () => {
+
   return <>
+    <Login />
     <section className="welcome">
       <article>
         <h2>BIENVENIDO</h2>
         <p>Enfrenta las olas de calor con seguridad y rendimiento. Regístrate ahora y únete a Sport Cool para disfrutar de una experiencia deportiva sin preocupaciones</p>
       </article>
     </section>
+
     <section className="buttons">
       <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
       <button className="nav-link"><Link to='/pronostico'>Pronosticos meteorologicos</Link></button>
@@ -111,6 +117,7 @@ const Home = () => {
         </div>
       </section>
     </section>
+
   </>;
 };
 

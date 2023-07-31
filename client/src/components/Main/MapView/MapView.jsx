@@ -59,7 +59,7 @@ const Map = () => {
         })
 
       } */}
-      {data[0]}
+
     </MapContainer>
     <button>recomiendame una ruta</button>
   </>

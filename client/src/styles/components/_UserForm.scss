@@ -37,8 +37,7 @@
         }
 
         input {
-            margin: $form-elements-margin;
-            width: 40%;
+            @include input
         }
 
         .profile-btn {
