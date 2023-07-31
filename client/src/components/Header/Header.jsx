@@ -11,6 +11,7 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const logged = userData.logged
 
   const handleMenuItemClick = () => {
     setIsMenuOpen(false); // Close the menu when a menu item is clicked
@@ -20,11 +21,10 @@ const Header = () => {
     <>
       <header>
 
-        <Link to='/'><h1>SPORTS COOL</h1></Link>
+        <Link to='/'><img src="./logo/lOGO(1).png" alt="" /></Link>
+
         <div className="button-container">
-          {/* <button className="nav-link"><Link className="new-user" to='/register'>NUEVO USUARIO</Link></button> */}
-          {/* <button><Link className="new-user" to='/miperfil'>Inicio</Link></button> */}
-          <IonIcon icon={listOutline} className="icon list-icon" onClick={toggleMenu} />
+          {logged && <IonIcon icon={listOutline} className="icon list-icon" onClick={toggleMenu} />}
         </div>
       </header>
 

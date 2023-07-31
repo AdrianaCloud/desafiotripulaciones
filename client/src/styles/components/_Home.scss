@@ -3,7 +3,10 @@
 
 * {
     font-family: $nunito;
-    background-color: $neutral ;
+}
+
+.home-container {
+    background-color: $neutral;
 }
 
 h1 {
@@ -33,6 +36,7 @@ button {
     display: flex;
     flex-direction: row;
     width: 30%;
+    margin: $page-margin;
 }
 
 .buttons {
@@ -41,6 +45,7 @@ button {
     border-radius: 40px;
     padding: 10px;
     margin-bottom: 50px;
+    margin: $page-margin;
 }
 
 .routes,
@@ -50,6 +55,7 @@ button {
 .security-advice {
     display: flex;
     margin-bottom: 50px;
+    margin: $page-margin;
 
     article {
         @include articleDisplay
@@ -59,6 +65,7 @@ button {
 .footer {
     display: flex;
     margin-top: 40px;
+    margin: $page-margin;
 
     .join-now {
         width: 90%;

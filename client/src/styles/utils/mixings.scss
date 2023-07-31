@@ -13,8 +13,9 @@
 }
 
 @mixin input {
-    background-color: rgb(213, 212, 212);
-    border: none;
+    background-color: rgba(213, 212, 212, .8);
+    border: 1px solid black;
+    //box-shadow: 0px 5px 5px black; //queda demasiado demasiado
     margin-bottom: 10px;
     padding: 12px;
     border-radius: 30px;

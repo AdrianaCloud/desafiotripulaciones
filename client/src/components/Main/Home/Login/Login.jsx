@@ -3,6 +3,7 @@ import axios from 'axios';
 import { IonIcon } from '@ionic/react';
 import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
 import { UserContext } from "../../../../context/userContext";
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [loginAttempts, setLoginAttempts] = useState(0);
@@ -11,6 +12,7 @@ const Login = () => {
   const [passwordMessage, setPasswordMessage] = useState("");
 
   const { userData, setUserData } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -44,16 +46,14 @@ const Login = () => {
 
     try {
       const request = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/users/login", { email, password });
-      console.log(request.data)
-      setUserData({
-        logged: true,
-        role: "user"
-      })
+      console.log(request.data.user)
+      setUserData({ ...request.data.user, logged: true })
       console.log(userData);
 
       // If login is successful, reset loginAttempts and clear any login block
       setLoginAttempts(0);
       setLoginBlocked(false);
+      navigate('/')
     } catch (error) {
       console.log(error.message);
 
@@ -83,6 +83,7 @@ const Login = () => {
         {isLoginBlocked && <p className="error-message">Login is blocked. Please try again after 5 minutes.</p>}
         <button type="submit" className="form-btn" disabled={isLoginBlocked}>Log in</button>
       </form>
+      <button className="register-btn">Register</button>
       <section className="sign-in-with">
         <p>Iniciar sesíon con</p>
         <section className="sign-in-btns">

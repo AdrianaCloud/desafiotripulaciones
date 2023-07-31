@@ -6,6 +6,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../../../public/fondologin.png');
+    background-repeat: no-repeat;
 
     img {
         width: 60vw;
@@ -13,12 +15,7 @@
     }
 
     input {
-        background-color: $neutral-light-grey;
-        border: none;
-        margin-bottom: 10px;
-        padding: 12px;
-        border-radius: 30px;
-        width: 80%;
+        @include input
     }
 
     form {
@@ -28,12 +25,15 @@
         width: 80%;
     }
 
-
-
     .form-btn {
         margin: 30px 0 0px 0;
         width: 80%;
 
+    }
+
+    .register-btn {
+        width: 65%;
+        margin-top: 30px;
     }
 
     .container {
@@ -58,6 +58,11 @@
     .sign-in-icon {
         margin-right: 20px;
         font-size: 30px;
+    }
+
+    .sign-in-btns {
+        margin-bottom: 50px;
+
     }
 }
 

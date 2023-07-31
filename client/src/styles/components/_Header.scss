@@ -4,6 +4,12 @@
 header {
     display: flex;
     justify-content: space-between;
+    background-color: $neutral;
+
+    img {
+        width: 40vw;
+        margin: 5px;
+    }
 }
 
 

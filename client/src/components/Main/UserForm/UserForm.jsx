@@ -2,21 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const UserForm = () => {
-  const sportOptions = [
-    "BMX", "Ciclismo", "Ciclismo estacionario", "Calistenia",
-    "Entrenamiento en circuito", "Levantamiento de peso",
-    "Máquina escaladora", "Aeróbicos", "Yoga", "Aeróbicos acuáticos",
-    "Correr", "Atletismo", "Bádminton", "Baloncesto", "Bolos",
-    "Billar", "Boxeo", "Dardos", "Frisbee", "Ultimate frisbee", "Golf",
-    "Minigolf", "Gimnasia", "Balonmano", "Hockey", "Petanca", "Calva",
-    "Artes marciales", "Kickboxing", "Kickball", "Pádel", "Raquetbol",
-    "Escalada", "Salto a la comba", "Chito", "Skateboard", "Patinaje",
-    "Fútbol", "Fútbol sala", "Sóftbol", "Béisbol",
-    "Tenis de mesa / ping pong", "Tai chi", "Tenis", "Tenis en pareja",
-    "Voleibol", "Marcha rápida", "Montañismo", "Caminar", "Natación",
-    "Nado sincronizado", "Waterpolo", "Voleibol acuático",
-    "Patinaje sobre hielo", "Frontenis", "Senderismo"
-  ];
+  const sportOptions = ['Aeróbicos', 'Aeróbicos acuáticos', 'Artes marciales', 'Atletismo',
+    'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo',
+    'Bádminton', 'Béisbol', 'Calistenia', 'Calva', 'Caminar', 'Chito',
+    'Ciclismo', 'Ciclismo estacionario', 'Correr', 'Dardos',
+    'Entrenamiento en circuito', 'Escalada', 'Frisbee', 'Frontenis',
+    'Fútbol', 'Fútbol sala', 'Gimnasia', 'Golf', 'Hockey', 'Kickball',
+    'Kickboxing', 'Levantamiento de peso', 'Marcha rápida', 'Minigolf',
+    'Montañismo', 'Máquina escaladora', 'Nado sincronizado',
+    'Natación', 'Padel', 'Patinaje', 'Patinaje sobre hielo', 'Petanca',
+    'Raquetbol', 'Salto a la comba', 'Senderismo', 'Skateboard',
+    'Sóftbol', 'Tai chi', 'Tenis', 'Tenis de mesa', 'Tenis en pareja',
+    'Ultimate frisbee', 'Voleibol', 'Voleibol acuático', 'Waterpolo',
+    'Yoga']
 
   const [selectedSports, setSelectedSports] = useState([]);
   const [showSports, setShowSports] = useState(false);

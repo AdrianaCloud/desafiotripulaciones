@@ -6,6 +6,7 @@ const NavBar = ({ onCloseMenu }) => {
     <>
       <ul>
         <li><Link to='/' onClick={onCloseMenu}>Home</Link></li>
+        <li><Link to='/cuestionario' onClick={onCloseMenu}>cuestionario</Link></li>
         <li><Link to='/miperfil' onClick={onCloseMenu}>Mi Perfil</Link></li>
         <li><Link to='/consejosseguridad' onClick={onCloseMenu}>Consejos seguridad</Link></li>
         <li><Link to='/pronostico' onClick={onCloseMenu}>Pronosticos meteorologicos</Link></li>
