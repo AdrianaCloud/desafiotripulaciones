@@ -71,15 +71,13 @@ const UserForm = () => {
   return (
     <>
       <section className="user-form">
-        <h2>Introduce tus datos</h2>
-
+        <img src="./logo/lOGO(1).png" alt="" />
+        <h3>¡vamos a conocerte mejor!</h3>
         <form action="" onSubmit={handleForm}>
+          <button className="show-sports-btn" type="button" onClick={handleToggleSports}>
+            {showSports ? "Ocultar" : "Mostrar"} deportes favoritos
+          </button>
           <div>
-            <p>
-              <button type="button" onClick={handleToggleSports}>
-                {showSports ? "Ocultar" : "Mostrar"} deportes favoritos
-              </button>
-            </p>
             {showSports && (
               <div>
                 {sportOptions.map((option) => (

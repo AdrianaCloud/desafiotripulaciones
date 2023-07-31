@@ -8,6 +8,10 @@
     flex-direction: column;
     height: 100vh;
 
+    img {
+        width: 30%;
+    }
+
     h2 {
         color: $secondary-dark-color;
         text-align: center;
@@ -21,9 +25,31 @@
         justify-content: center;
         width: 80%;
 
+        .show-sports-btn {
+            margin-bottom: 40px;
+        }
+
         section {
             display: flex;
             width: 40%;
+        }
+
+        div {
+            display: grid;
+            grid-template-columns: repeat(3, max-content 1fr);
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 16px;
+
+            label {
+                display: block;
+                width: 100%;
+
+                input[type="checkbox"] {
+                    width: 80px;
+                    text-align: center;
+                }
+            }
         }
 
         select {
@@ -50,6 +76,37 @@
 @media (max-width: 460px) {
     .user-form {
         form {
+            div {
+                grid-template-columns: 1fr;
+                /* Single column for mobile devices */
+                grid-gap: 20px;
+                /* Increase the grid gap for better spacing on mobile */
+                align-items: center;
+
+                div {
+                    label {
+                        display: grid;
+                        /* Use grid layout for the label and checkbox */
+                        grid-template-columns: max-content 1fr;
+                        /* Two columns: one for checkbox, one for label */
+                        align-items: center;
+                        /* Align items in the center */
+                        width: 100%;
+                        /* Make labels take full width */
+                        white-space: nowrap;
+
+                        input[type="checkbox"] {
+                            margin: 0;
+                            width: 80px;
+                            text-align: center;
+                            justify-self: center;
+                        }
+                    }
+                }
+
+
+            }
+
             align-items: unset;
 
             section {

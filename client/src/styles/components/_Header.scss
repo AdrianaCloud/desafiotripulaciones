@@ -4,10 +4,10 @@
 header {
     display: flex;
     justify-content: space-between;
-    background-color: $neutral;
+    align-items: center;
 
     img {
-        width: 40vw;
+        width: 35vw;
         margin: 5px;
     }
 }
