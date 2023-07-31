@@ -1,6 +1,5 @@
 const itemsModels = require('../models/items')
 const uuid = require('uuid');
-const { hashPassword, comparePasswords, generateToken, generateRefreshToken } = require('../utils/authUtils');
 
 // GET (Gets all sendas in DDBB) -> http://localhost:5000/api/items/sendas
 const getSendas = async (req, res) => {
