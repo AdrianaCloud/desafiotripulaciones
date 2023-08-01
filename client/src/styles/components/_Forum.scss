@@ -3,6 +3,13 @@
 @import '../utils/mixings.scss';
 
 // Forum component styles
+
+article.publication {
+    background-color: aquamarine;
+    width: 90%;
+    margin-bottom: 5%;
+}
+
 .post-publication-form {
     display: flex;
     flex-direction: column;

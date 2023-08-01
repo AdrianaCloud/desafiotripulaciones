@@ -1,34 +1,52 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../../../context/userContext";
 
 const Forum = () => {
   const [publication, setPublication] = useState({});
+
+  const [publicationsList, setPublicationsList] = useState([])
+
+  const { userData, setUserData } = useContext(UserContext)
+
   useEffect(() => {
-    const completeProfile = async () => {
-      try {
-        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/complete-profile', publication, {
-
-        });
-
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
+    const getPublications = async () => {
+      const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
+      console.log(data.data);
+      setPublicationsList(data.data)
     }
 
-    completeProfile();
+    getPublications()
+  }, [])
+
+  useEffect(() => {
+    const getPublications = async () => {
+      const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
+      console.log(data.data);
+      setPublicationsList(data.data)
+    }
+
+    getPublications()
   }, [publication])
 
-  const handlePublicationForm = (e) => {
+  const handlePublicationForm = async (e) => {
     e.preventDefault();
-    // este formulario manda los datos a la tabla de profile. Cual es la ruta?
-    //este boton redirecciona al componente myprofile
-    //guardo la informacion de cada valor de los inputs en useState?
     const publication = {
-      "titulo": e.target.titulo.value,
-      "texto": e.target.texto.value,
+      "title": e.target.titulo.value,
+      "text": e.target.texto.value,
+      "user_id": userData.email,
+      "item_id": "null",
+      "alert": false
     }
+
+    const postPublication = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications", publication)
+
+    e.target.texto.value = ""
+    e.target.titulo.value = ""
+
+    console.log(postPublication);
+
     setPublication(publication)
   }
   return <>
@@ -39,6 +57,13 @@ const Forum = () => {
         <textarea name="texto" id="" cols="30" rows="5"></textarea>
         <button type="submit">Send</button>
       </form>
+
+      {publicationsList.length ? publicationsList.map((item, index) => <article key={index} className="publication">
+        <p>{item.title}</p>
+        <p>{item.text}</p>
+        <p>{item.date.value}</p>
+        <p>{item.user_id}</p>
+      </article>) : <></>}
     </section>
   </>;
 };
