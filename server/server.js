@@ -7,6 +7,7 @@ require('dotenv').config()
 const usersApiRouter = require('./routes/usersApiRoutes')
 const itemsApiRouter = require('./routes/itemsApiRoutes')
 const publicationsApiRouter = require('./routes/publicationsApiRoutes')
+const perfilApiRouter = require('./routes/perfilApiRoutes')
 const cors = require("cors");
 const helmet = require("helmet");
 const app = express();
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use("/api/users", usersApiRouter)
 app.use("/api/items", itemsApiRouter)
 app.use("/api/publications", publicationsApiRouter)
+app.use("/api/perfil", perfilApiRouter)
 
 //Middlewares
 app.use(bodyParser.json());
