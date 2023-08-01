@@ -1,24 +1,37 @@
 import React from "react";
+import { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
+import { UserContext } from "../../../context/userContext";
+import NavBar from "../../Header/NavBar/NavBar";
+import { IonIcon } from '@ionic/react';
+import { listOutline } from 'ionicons/icons';
 
 const MyProfile = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { userData, setUserData } = useContext(UserContext)
 
-
-
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false); // Close the menu when a menu item is clicked
+  };
   return <>
-    {/* meter el componente navbar despues de haber logrado ocultar el header */}
+
     <section className="profile-container">
+
       <div className="black-box">
-        <h3>Eustaquio Abichuela</h3>
+        <IonIcon icon={listOutline} className="icon list-icon" onClick={toggleMenu} />
+        <h3>{userData.user_name}</h3>
         <img className="stats-img" src="./silluette.jpg" alt="" />
       </div>
-
+      {isMenuOpen && <NavBar onCloseMenu={handleMenuItemClick} />}
       <Link to='/editarperfil'>
         <button className="edit-profile-btn">editar perfil</button>
       </Link>
 
       <section className="heading-info">
-        <p><span>Fecha de nacimiento:</span> { }</p>
+        <p><span>Fecha de nacimiento: </span>20 de abril del 90 { }</p>
         <p><span>Ciudad:</span> { }</p>
         <p><span>5</span> Seguidos    <span>12</span> Seguidores</p>
       </section>
@@ -42,6 +55,7 @@ const MyProfile = () => {
         <p className="info-container">32{ }</p>
       </section>
     </section>
+    {/* Render NavBar only if isMenuOpen is true */}
   </>
 };
 

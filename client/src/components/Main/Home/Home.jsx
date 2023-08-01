@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { IonIcon } from '@ionic/react';
 import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
 import Login from './Login/Login'
+import Header from '../../Header/Header'
 import { UserContext } from '../../../context/userContext';
+
 
 
 const Home = () => {
@@ -12,6 +14,7 @@ const Home = () => {
   console.log(logged)
   console.log(userData)
   return <>
+    <Header />
     <div className="home-container">
       {logged === false ? <Login /> : null}
       {logged === true ? <section className="welcome">

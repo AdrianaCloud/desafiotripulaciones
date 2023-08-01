@@ -21,7 +21,7 @@ const Main = () => {
   //  const location = useLocation();
 
   const { userData, setUserData } = useContext(UserContext)
-  console.log(userData)
+
   return (
     <>
 

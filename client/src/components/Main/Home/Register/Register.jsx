@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 // import logo from '../../../../../public/logo/LOGO.png'
 
 const Register = () => {
@@ -7,7 +8,7 @@ const Register = () => {
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("")
-
+  const navigate = useNavigate();
   // Generates custom error message below search input
   const newError = (errMessage) => {
     setErrorMessage(errMessage)
@@ -32,6 +33,7 @@ const Register = () => {
       if (request.data === 201) {
         console.log("user has been registered");
       };
+      navigate('/cuestionario')
     } catch (error) {
       newError(error.response.data.message)
     };

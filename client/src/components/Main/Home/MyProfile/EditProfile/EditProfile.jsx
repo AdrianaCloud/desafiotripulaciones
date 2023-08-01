@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { UserContext } from '../../../../../context/userContext';
 
 const EditProfile = () => {
+  const { userData, setUserData } = useContext(UserContext);
   const sportOptions = ['Aeróbicos', 'Aeróbicos acuáticos', 'Artes marciales', 'Atletismo',
     'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo',
     'Bádminton', 'Béisbol', 'Calistenia', 'Calva', 'Caminar', 'Chito',
@@ -13,11 +16,26 @@ const EditProfile = () => {
     'Raquetbol', 'Salto a la comba', 'Senderismo', 'Skateboard',
     'Sóftbol', 'Tai chi', 'Tenis', 'Tenis de mesa', 'Tenis en pareja',
     'Ultimate frisbee', 'Voleibol', 'Voleibol acuático', 'Waterpolo',
-    'Yoga']
+    'Yoga'];
 
+  useEffect(() => {
+    const completeProfile = async () => {
+      try {
+        const response = await axios.update('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
+
+        });
+
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    completeProfile();
+  }, [editedUserPreferences]);
   const [selectedSports, setSelectedSports] = useState([]);
   const [showSports, setShowSports] = useState(false);
-  const [userData, setuserData] = useState({});
+  const [editedUserPreferences, setEditedUserPreferences] = useState({});
   const handleToggleSports = () => {
     setShowSports(!showSports);
   };
@@ -29,6 +47,24 @@ const EditProfile = () => {
       setSelectedSports([...selectedSports, selectedSport]);
     }
   };
+
+  const handleForm = async (e) => {
+    e.preventDefault()
+    const editedUserPreferences = {
+      "user_id": userData.email,
+      "condicion": e.target.nivelActividad.value,
+      "preferencias_deportivas": selectedSports,
+      "tipo_de_dieta": e.target.tipoDieta.value,
+      "objetivo_de_entrenamiento": e.target.objetivoEntrenamiento.value,
+      "ciudad": e.target.ciudad.value,
+      "altura": parseFloat(e.target.altura.value),
+      "peso": e.target.peso.value,
+      "edad": parseInt(e.target.edad.value, 10),
+      "sexo": e.target.genero.value
+    }
+    setEditedUserPreferences(editedUserPreferences)
+  }
+
   return <>
     <section className="edit-profile-container">
       <div className="black-box">
@@ -36,7 +72,7 @@ const EditProfile = () => {
         <img className="stats-img" src="./silluette.jpg" alt="" />
       </div>
       <h2>Modifica tu perfil</h2>
-      <form action="">
+      <form action="" onSubmit={handleForm}>
         <p className="info-title">Nivel de actividad</p>
         <select name="nivelActividad" id="nivelActividad">
           <option value="">Nivel de actividad</option>

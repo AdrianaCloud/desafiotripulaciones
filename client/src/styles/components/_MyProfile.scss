@@ -6,6 +6,7 @@
 } */
 
 .profile-container {
+    margin: -20px 0px 0px 0px;
 
     .black-box {
         width: 100%;
@@ -14,20 +15,22 @@
         background: linear-gradient(180deg, rgba(129, 182, 52, 1) 0%, rgba(59, 121, 9, 1) 52%, rgba(2, 0, 36, 1) 100%);
         padding: 0px;
 
+        .list-icon {
+            position: relative;
+            top: 25px;
+            left: 300px;
+        }
+
         h3 {
             color: white;
-            position: relative;
-            top: 75px;
-            left: 120px;
+            margin: 0px 0px 10px 150px
         }
 
         img {
             width: 65px;
             height: 60px;
             border-radius: 50%;
-            position: relative;
-            top: 20px;
-            left: 20px;
+            margin: -30px 0px 70px 30px;
             border: 1px solid black;
         }
     }
@@ -60,7 +63,7 @@
         flex-direction: column;
 
 
-        background-color: $neutral-light-grey;
+        background-color: rgb(207, 207, 207);
         border-radius: 30px;
         margin-top: 20px;
 
@@ -74,7 +77,7 @@
         }
 
         .info-container {
-            background-color: $neutral-dark-grey;
+            background-color: rgb(163, 163, 163);
             border-radius: 20px;
             padding: 10px 20px;
             width: 80%;
