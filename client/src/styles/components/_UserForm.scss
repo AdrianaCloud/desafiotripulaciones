@@ -1,0 +1,74 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+.user-form {
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    flex-direction: column;
+    height: 100vh;
+
+    h2 {
+        color: $secondary-dark-color;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+
+        section {
+            display: flex;
+            width: 40%;
+        }
+
+        select {
+            background-color: transparent;
+            border: none;
+            padding: 0 1em 0 0;
+            margin: 0;
+            width: 50%;
+            padding: $form-elements-padding;
+            margin: $form-elements-margin;
+        }
+
+        input {
+            @include input
+        }
+
+        .profile-btn {
+            margin: 40px 0px 100px;
+            width: 30%;
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .user-form {
+        form {
+            align-items: unset;
+
+            section {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            select {
+                width: 100%;
+                min-width: 200px;
+            }
+
+            input {
+                min-width: 90%;
+            }
+
+            .profile-btn {
+                min-width: 90%;
+            }
+        }
+    }
+}

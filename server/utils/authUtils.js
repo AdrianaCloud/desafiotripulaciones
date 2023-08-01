@@ -1,11 +1,10 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const secretKey = process.env.JWT_SECRET_KEY;
 
 const generateToken = (userPayload) => {
-    const secretKey = process.env.JWT_SECRET_KEY;
-    const options = { expiresIn: "1h" };
 
-    return jwt.sign(userPayload, secretKey, options);
+    return jwt.sign(userPayload, secretKey, { expiresIn: "1h" });
 };
 
 const hashPassword = async (password) => {
@@ -19,8 +18,22 @@ const comparePasswords = async (password, hashedPassword) => {
     return match;
 };
 
+const generateRefreshToken = (token) => {
+
+    return jwt.verify(token, secretKey, (err, user) => {
+        if (err) {
+            throw err
+        }
+
+        const accessToken = jwt.sign({ user_name: user.user_name, email: user.email, role: user.role }, secretKey, { expiresIn: '1h' });
+        return accessToken;
+    });
+
+};
+
 module.exports = {
     generateToken,
+    generateRefreshToken,
     hashPassword,
     comparePasswords,
 };

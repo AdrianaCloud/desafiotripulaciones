@@ -1,4 +1,3 @@
-const pool = require('../utils/db_pgsql')
 const usersQueries = require('../queries/users.queries')
 const { BigQuery } = require('@google-cloud/bigquery');
 

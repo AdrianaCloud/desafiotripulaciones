@@ -10,5 +10,6 @@ usersApiRouter.post("/login", usersApiControllers.logUser);
 usersApiRouter.post("/logout", usersApiControllers.logOutUser);
 usersApiRouter.delete("/", usersApiControllers.deleteUser);
 usersApiRouter.put("/", usersApiControllers.updateUser);
+usersApiRouter.post("/token", usersApiControllers.refreshToken);
 
 module.exports = usersApiRouter;
