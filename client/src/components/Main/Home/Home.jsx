@@ -9,8 +9,6 @@ import { UserContext } from '../../../context/userContext';
 const Home = () => {
   const { userData, setUserData } = useContext(UserContext)
   const logged = userData.logged
-  console.log(logged)
-  console.log(userData)
   return <>
     <div className="home-container">
       {logged === false ? <Login /> : null}

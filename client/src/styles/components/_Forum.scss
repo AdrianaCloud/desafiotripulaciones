@@ -4,21 +4,55 @@
 
 // Forum component styles
 
-article.publication {
-    background-color: aquamarine;
-    width: 90%;
-    margin-bottom: 5%;
+.publications-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
 }
 
 .post-publication-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    background-color: #D6D6D6;
 
+    border-radius: 0vw 0vw 15vw 15vw;
+    
+    .input-text-form {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        input {
+            @include input;
+            background-color: white;
+            color: black;
+            font-size: 5vw;
+            width: 90%;
+        }
+
+        textarea {
+            @include input;
+            background-color: white;
+            color: black;
+            resize: none;
+            font-size: 5vw;
+            width: 90%;
+        }
+
+        label {
+            font-size: 6vw;
+            align-self: flex-start;
+        }
+    }
+    
     h2 {
-        color: $secondary-dark-color;
-        font-size: 24px;
+        color: black;
+        font-size: 10vw;
         margin-bottom: 20px;
     }
 
@@ -26,25 +60,11 @@ article.publication {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         width: 80%;
         max-width: 600px;
         padding: 20px;
         border-radius: 8px;
-
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
-            font-size: 16px;
-            background-color: transparent;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
 
         .form-btn {
             margin-top: 20px;
@@ -55,6 +75,7 @@ article.publication {
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            font-size: 6vw;
             transition: background-color 0.3s ease;
         }
     }

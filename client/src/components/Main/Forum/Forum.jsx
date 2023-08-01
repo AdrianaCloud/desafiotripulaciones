@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../../context/userContext";
+import PublicationCard from "./PublicationCard";
 
 const Forum = () => {
   const [publication, setPublication] = useState({});
@@ -13,7 +14,6 @@ const Forum = () => {
   useEffect(() => {
     const getPublications = async () => {
       const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
-      console.log(data.data);
       setPublicationsList(data.data)
     }
 
@@ -23,7 +23,6 @@ const Forum = () => {
   useEffect(() => {
     const getPublications = async () => {
       const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
-      console.log(data.data);
       setPublicationsList(data.data)
     }
 
@@ -45,26 +44,34 @@ const Forum = () => {
     e.target.texto.value = ""
     e.target.titulo.value = ""
 
-    console.log(postPublication);
-
     setPublication(publication)
   }
   return <>
     <section className="post-publication-form">
-      <h2>Comunidad de apoyo</h2>
+      <h2>Publica tu comentario!</h2>
       <form action="" onSubmit={handlePublicationForm}>
-        <input name="titulo" type="text" placeholder="Introduce un titulo para la publicacion" />
-        <textarea name="texto" id="" cols="30" rows="5"></textarea>
-        <button type="submit">Send</button>
-      </form>
+        <div className="input-text-form">
+          <label htmlFor="titulo">Título</label>
+          <input name="titulo" id="titulo" type="text" placeholder="Introduce un titulo para la publicacion" />
+        </div>
 
-      {publicationsList.length ? publicationsList.map((item, index) => <article key={index} className="publication">
-        <p>{item.title}</p>
-        <p>{item.text}</p>
-        <p>{item.date.value}</p>
-        <p>{item.user_id}</p>
-      </article>) : <></>}
+        <div className="input-text-form">
+          <label htmlFor="texto">Descripción</label>
+          <textarea name="texto" id="texto"></textarea>
+        </div>
+        <button type="submit" className="form-btn">Enviar</button>
+      </form>
     </section>
+    
+    {publicationsList.length ?
+
+      <article className="publications-container">
+      {
+        publicationsList.map((item, index) => <PublicationCard key={index} title={item.title} text={item.text} date={item.date.value} user_id={item.user_id} className="publication"></PublicationCard>) 
+      }
+      </article>
+
+    : <></>}
   </>;
 };
 
