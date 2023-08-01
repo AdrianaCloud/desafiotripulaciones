@@ -1,40 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../context/userContext';
 
 const UserForm = () => {
-  const sportOptions = ['Aeróbicos', 'Aeróbicos acuáticos', 'Artes marciales', 'Atletismo',
-    'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo',
-    'Bádminton', 'Béisbol', 'Calistenia', 'Calva', 'Caminar', 'Chito',
-    'Ciclismo', 'Ciclismo estacionario', 'Correr', 'Dardos',
-    'Entrenamiento en circuito', 'Escalada', 'Frisbee', 'Frontenis',
-    'Fútbol', 'Fútbol sala', 'Gimnasia', 'Golf', 'Hockey', 'Kickball',
-    'Kickboxing', 'Levantamiento de peso', 'Marcha rápida', 'Minigolf',
-    'Montañismo', 'Máquina escaladora', 'Nado sincronizado',
-    'Natación', 'Padel', 'Patinaje', 'Patinaje sobre hielo', 'Petanca',
-    'Raquetbol', 'Salto a la comba', 'Senderismo', 'Skateboard',
-    'Sóftbol', 'Tai chi', 'Tenis', 'Tenis de mesa', 'Tenis en pareja',
-    'Ultimate frisbee', 'Voleibol', 'Voleibol acuático', 'Waterpolo',
-    'Yoga']
+  const { userData, setUserData } = useContext(UserContext)
+  const navigate = useNavigate();
+  const sportOptions = ['Aeróbicos acuáticos', 'Aeróbicos_1.0', 'Aeróbicos_2.0', 'Aeróbicos_3.0', 'Artes marciales', 'Atletismo_1.0', 'Atletismo_2.0', 'Atletismo_3.0', 'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo', 'Bádminton', 'Béisbol', 'Calistenia_1.0', 'Calistenia_2.0', 'Calva', 'Caminar_1.0', 'Caminar_2.0', 'Caminar_3.0', 'Chito', 'Ciclismo estacionario_1.0', 'Ciclismo estacionario_2.0', 'Ciclismo estacionario_3.0', 'Ciclismo estacionario_4.0', 'Ciclismo estacionario_5.0', 'Ciclismo_1.0', 'Ciclismo_2.0', 'Ciclismo_3.0', 'Ciclismo_4.0', 'Ciclismo_5.0',
+    'Correr',
+    'Dardos',
+    'Entrenamiento en circuito',
+    'Escalada',
+    'Frisbee',
+    'Frontenis',
+    'Fútbol',
+    'Fútbol sala',
+    'Gimnasia',
+    'Golf',
+    'Hockey',
+    'Kickball',
+    'Kickboxing',
+    'Levantamiento de peso_1.0',
+    'Levantamiento de peso_2.0',
+    'Marcha rápida',
+    'Minigolf',
+    'Montañismo',
+    'Máquina escaladora',
+    'Nado sincronizado',
+    'Natación_1.0',
+    'Natación_2.0',
+    'Natación_3.0',
+    'Padel',
+    'Patinaje',
+    'Patinaje sobre hielo',
+    'Petanca',
+    'Raquetbol',
+    'Salto a la comba_1.0',
+    'Salto a la comba_2.0',
+    'Salto a la comba_3.0',
+    'Senderismo',
+    'Skateboard',
+    'Sóftbol',
+    'Tai chi',
+    'Tenis',
+    'Tenis de mesa',
+    'Tenis en pareja',
+    'Ultimate frisbee',
+    'Voleibol',
+    'Voleibol acuático',
+    'Waterpolo',
+    'Yoga'];
 
   const [selectedSports, setSelectedSports] = useState([]);
   const [showSports, setShowSports] = useState(false);
-  const [userData, setuserData] = useState({});
+  const [userPreferences, setUserPreferences] = useState({});
 
   useEffect(() => {
     const completeProfile = async () => {
       try {
-        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/complete-profile', userData, {
-
-        });
+        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', userPreferences);
 
         console.log(response);
+        navigate('/miperfil')
       } catch (error) {
         console.log(error);
       }
     }
 
     completeProfile();
-  }, [userData])
+  }, [userPreferences]);
 
   const handleToggleSports = () => {
     setShowSports(!showSports);
@@ -46,40 +80,44 @@ const UserForm = () => {
       setSelectedSports(selectedSports.filter((sport) => sport !== selectedSport));
     } else if (selectedSports.length < 3) {
       setSelectedSports([...selectedSports, selectedSport]);
-    }
+    };
   };
 
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
-    // este formulario manda los datos a la tabla de profile. Cual es la ruta?
-    //este boton redirecciona al componente myprofile
-    //guardo la informacion de cada valor de los inputs en useState?
-    const userData = {
-      "nivel_de_actividad": e.target.nivelActividad.value,
+    const userPreferences = {
+      "user_id": userData.email,
       "preferencias_deportivas": selectedSports,
       "tipo_de_dieta": e.target.tipoDieta.value,
-      "objetivo_de_entrenamiento": e.target.objetivoEntrenamiento.value,
       "ciudad": e.target.ciudad.value,
-      "altura": parseFloat(e.target.altura.value),
-      "peso": e.target.peso.value,
+      "objetivo_de_entrenamiento": parseInt(e.target.objetivoEntrenamiento.value),
+      "sexo": e.target.genero.value,
+      "peso": parseInt(e.target.peso.value),
+      "condicion": parseInt(e.target.nivelActividad.value),
       "edad": parseInt(e.target.edad.value, 10),
-      "genero": e.target.genero.value,
+      "altura": parseFloat(e.target.altura.value)
     }
-    setuserData(userData)
+    setUserPreferences(userPreferences)
+    console.log(userPreferences);
+    /* const request = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil", userPreferences);
+    if (request.data === 201) {
+      console.log("user has profile info");
+    }; */
+
+
   };
 
   return (
     <>
       <section className="user-form">
-        <h2>Introduce tus datos</h2>
-
+        <img src="./logo/lOGO(1).png" alt="" />
+        <h3>¡vamos a conocerte mejor!</h3>
         <form action="" onSubmit={handleForm}>
+          <button className="show-sports-btn" type="button" onClick={handleToggleSports}>
+            {showSports ? "Ocultar" : "Mostrar"} deportes favoritos
+          </button>
+          <p>Algunos deportes estan divididos en intensidades, escoge tu intensidad preferida</p>
           <div>
-            <p>
-              <button type="button" onClick={handleToggleSports}>
-                {showSports ? "Ocultar" : "Mostrar"} deportes favoritos
-              </button>
-            </p>
             {showSports && (
               <div>
                 {sportOptions.map((option) => (

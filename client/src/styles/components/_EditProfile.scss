@@ -1,43 +1,49 @@
 @import '../utils/variables.scss';
 @import '../utils/mixings.scss';
 
-.user-form {
-    display: flex;
-    align-items: center;
-    justify-content: baseline;
-    flex-direction: column;
-    height: 100vh;
+.edit-profile-container {
+    .black-box {
+        width: 100%;
+        height: 100px;
+        background: rgb(129, 182, 52);
+        background: linear-gradient(180deg, rgba(129, 182, 52, 1) 0%, rgba(59, 121, 9, 1) 52%, rgba(2, 0, 36, 1) 100%);
+        padding: 0px;
 
-    img {
-        width: 30%;
-    }
+        h3 {
+            color: white;
+            position: relative;
+            top: 75px;
+            left: 120px;
+        }
 
-    h2 {
-        color: $secondary-dark-color;
-        text-align: center;
+        img {
+            width: 65px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+            top: 20px;
+            left: 20px;
+            border: 1px solid black;
+        }
     }
 
     form {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
         justify-content: center;
-        width: 80%;
-
-        .show-sports-btn {
-            margin-bottom: 40px;
-        }
-
-        section {
-            display: flex;
-            width: 40%;
-        }
+        align-items: center;
 
         p {
-            text-align: center;
-            padding-bottom: 40px;
-            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        select {
+            background-color: $secondary-light-color;
+            border: none;
+            border-radius: 20px;
+            width: 50%;
+            padding: $form-elements-padding;
+            margin: $form-elements-margin;
         }
 
         div {
@@ -57,30 +63,15 @@
                 }
             }
         }
+    }
 
-        select {
-            background-color: transparent;
-            border: none;
-            padding: 0 1em 0 0;
-            margin: 0;
-            width: 50%;
-            padding: $form-elements-padding;
-            margin: $form-elements-margin;
-        }
-
-        input {
-            @include input
-        }
-
-        .profile-btn {
-            margin: 40px 0px 100px;
-            width: 30%;
-        }
+    #edit-profile-btn {
+        margin: 30px 0px
     }
 }
 
 @media (max-width: 460px) {
-    .user-form {
+    .edit-profile-container {
         form {
             div {
                 grid-template-columns: 1fr;
@@ -109,28 +100,6 @@
                         }
                     }
                 }
-
-
-            }
-
-            align-items: unset;
-
-            section {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            select {
-                width: 100%;
-                min-width: 200px;
-            }
-
-            input {
-                min-width: 90%;
-            }
-
-            .profile-btn {
-                min-width: 90%;
             }
         }
     }

@@ -3,7 +3,8 @@ import axios from 'axios';
 import { IonIcon } from '@ionic/react';
 import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
 import { UserContext } from "../../../../context/userContext";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginAttempts, setLoginAttempts] = useState(0);
@@ -73,6 +74,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
+
       <h2>Log in</h2>
       <img src="./logo/lOGO.png" alt="" />
       <form action="" className="auth-forms" onSubmit={handleLogin} id="login-form">
@@ -83,7 +85,7 @@ const Login = () => {
         {isLoginBlocked && <p className="error-message">Login is blocked. Please try again after 5 minutes.</p>}
         <button type="submit" className="form-btn" disabled={isLoginBlocked}>Log in</button>
       </form>
-      <button className="register-btn">Register</button>
+      <button className="register-btn"><Link to='/register' >Register</Link></button>
       <section className="sign-in-with">
         <p>Iniciar sesíon con</p>
         <section className="sign-in-btns">

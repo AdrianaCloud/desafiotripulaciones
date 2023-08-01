@@ -7,6 +7,7 @@ import Login from './Home/Login'
 import MapView from './MapView'
 import MyProfile from './MyProfile'
 import Forum from './Forum'
+import EditProfile from './Home/MyProfile/EditProfile/EditProfile';
 import ProtectedRoutes from '../../utils/ProtectedRoutes/ProtectedRoutes';
 import RoleManager from '../../utils/RoleManager/RoleManager';
 import UserForm from './UserForm/UserForm';
@@ -20,7 +21,7 @@ const Main = () => {
   //  const location = useLocation();
 
   const { userData, setUserData } = useContext(UserContext)
-  console.log(userData)
+
   return (
     <>
 
@@ -59,6 +60,22 @@ const Main = () => {
               component={
                 <RoleManager
                   component={<MyProfile />}
+                  role={userData.role}
+                  allowedRoles={["user"]}
+                />
+              }
+              logged={userData.logged}
+            />
+          }
+        />
+
+        <Route
+          path='editarperfil'
+          element={
+            <ProtectedRoutes
+              component={
+                <RoleManager
+                  component={<EditProfile />}
                   role={userData.role}
                   allowedRoles={["user"]}
                 />

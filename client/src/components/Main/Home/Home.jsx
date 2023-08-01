@@ -3,21 +3,25 @@ import { Link } from 'react-router-dom';
 import { IonIcon } from '@ionic/react';
 import { arrowUp, logoFacebook, logoInstagram, logoTwitter, peopleCircleOutline, star, starHalf } from 'ionicons/icons';
 import Login from './Login/Login'
+import Header from '../../Header/Header'
 import { UserContext } from '../../../context/userContext';
+
 
 
 const Home = () => {
   const { userData, setUserData } = useContext(UserContext)
   const logged = userData.logged
   return <>
+    <Header />
     <div className="home-container">
       {logged === false ? <Login /> : null}
-      <section className="welcome">
-        <article>
-          <h2>BIENVENIDO</h2>
+      {logged === true ? <section className="welcome">
+        <article className="max-security">
+          <h2>Máxima seguridad</h2>
           <p>Enfrenta las olas de calor con seguridad y rendimiento. Regístrate ahora y únete a Sport Cool para disfrutar de una experiencia deportiva sin preocupaciones</p>
+          <img src="./logo/lOGO.png" alt="" className="logo-welcome" />
         </article>
-      </section>
+      </section> : null}
 
       <section className="buttons">
         <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
@@ -107,15 +111,6 @@ const Home = () => {
               </div>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam quasi quisquam sit soluta beatae. Dolorem maxime atque soluta temporibus. Temporibus nemo molestias porro maxime, laborum officiis praesentium! Ratione ullam deleniti, dolorem nesciunt voluptate numquam ipsam cumque, recusandae accusantium dicta natus.</p>
             </article>
-          </div>
-        </section>
-        <section className="botom-register">
-          <button className="nav-link"><Link to='/register'>NUEVO USUSARIO</Link></button>
-          <div className="social-buttons">
-            <IonIcon icon={logoInstagram} className="icon" />
-            <IonIcon icon={logoFacebook} className="icon" />
-            <IonIcon icon={logoTwitter} className="icon" />
-            <IonIcon icon={arrowUp} className="icon arrowUp" />
           </div>
         </section>
       </section>
