@@ -4,11 +4,11 @@
 header {
     display: flex;
     justify-content: space-between;
-    background-color: $neutral;
+    align-items: center;
 
     img {
-        width: 40vw;
-        margin: 5px;
+        width: 30vw;
+        margin: 30px;
     }
 }
 

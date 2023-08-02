@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={user} >
-          <Header />
+
           <Main />
         </UserContext.Provider>
         <Footer />

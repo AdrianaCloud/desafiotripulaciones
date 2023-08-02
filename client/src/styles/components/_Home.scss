@@ -5,10 +5,6 @@
     font-family: $nunito;
 }
 
-.home-container {
-    background-color: $neutral;
-}
-
 h1 {
     color: $primary-color;
     font-family: $montserrat;
@@ -25,11 +21,30 @@ a {
 }
 
 p {
-    text-align: center;
+    text-align: left;
 }
 
 button {
     @include button
+}
+
+.log-in-first {
+    margin: 30px 0px 20px;
+
+    span {
+        font-weight: bold;
+    }
+
+}
+
+.max-security {
+    h2 {
+        text-align: left;
+    }
+
+    img {
+        display: none;
+    }
 }
 
 .welcome {
@@ -37,6 +52,10 @@ button {
     flex-direction: row;
     width: 30%;
     margin: $page-margin;
+}
+
+.logo-welcome {
+    width: 15%;
 }
 
 .buttons {
@@ -111,6 +130,14 @@ button {
 }
 
 @media (max-width: 460px) {
+    .max-security {
+
+        img {
+            display: grid;
+            position: relative;
+            left: 150px
+        }
+    }
 
     .routes,
     .adaptation,

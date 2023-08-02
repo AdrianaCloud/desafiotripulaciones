@@ -1,45 +1,87 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { UserContext } from "../../../context/userContext";
+import PublicationCard from "./PublicationCard";
+import { IonIcon } from '@ionic/react';
+import { arrowBackOutline } from "ionicons/icons";
 
 const Forum = () => {
   const [publication, setPublication] = useState({});
+
+  const [publicationsList, setPublicationsList] = useState([])
+
+  const { userData, setUserData } = useContext(UserContext)
+  const navigate = useNavigate();
   useEffect(() => {
-    const completeProfile = async () => {
-      try {
-        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/complete-profile', publication, {
-
-        });
-
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
+    const getPublications = async () => {
+      const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
+      setPublicationsList(data.data)
     }
 
-    completeProfile();
+    getPublications()
+  }, [])
+
+  useEffect(() => {
+    const getPublications = async () => {
+      const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
+      setPublicationsList(data.data)
+    }
+
+    getPublications()
   }, [publication])
 
-  const handlePublicationForm = (e) => {
+  const handlePublicationForm = async (e) => {
     e.preventDefault();
-    // este formulario manda los datos a la tabla de profile. Cual es la ruta?
-    //este boton redirecciona al componente myprofile
-    //guardo la informacion de cada valor de los inputs en useState?
     const publication = {
-      "titulo": e.target.titulo.value,
-      "texto": e.target.texto.value,
+      "title": e.target.titulo.value,
+      "text": e.target.texto.value,
+      "user_id": userData.email,
+      "item_id": "null",
+      "alert": false
     }
+
+    const postPublication = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications", publication)
+
+    e.target.texto.value = ""
+    e.target.titulo.value = ""
+
     setPublication(publication)
   }
+
+  const handleGoBackBtn = () => {
+    navigate(-1)
+  }
+
   return <>
+
     <section className="post-publication-form">
-      <h2>Comunidad de apoyo</h2>
+      <IonIcon icon={arrowBackOutline} className="icon arrow-back" onClick={handleGoBackBtn} />
+      <h2>Publica tu comentario!</h2>
       <form action="" onSubmit={handlePublicationForm}>
-        <input name="titulo" type="text" placeholder="Introduce un titulo para la publicacion" />
-        <textarea name="texto" id="" cols="30" rows="5"></textarea>
-        <button type="submit">Send</button>
+        <div className="input-text-form">
+          <label htmlFor="titulo">Título</label>
+          <input name="titulo" id="titulo" type="text" placeholder="titulo de publicacion" />
+        </div>
+
+        <div className="input-text-form">
+          <label htmlFor="texto">Descripción</label>
+          <textarea name="texto" id="texto"></textarea>
+        </div>
+        <button type="submit" className="form-btn">Enviar</button>
       </form>
     </section>
+
+    {publicationsList.length ?
+
+      <article className="publications-container">
+        {
+          publicationsList.map((item, index) => <PublicationCard key={index} title={item.title} text={item.text} date={item.date.value} user_id={item.user_id} className="publication"></PublicationCard>)
+        }
+      </article>
+
+      : <></>}
   </>;
 };
 
