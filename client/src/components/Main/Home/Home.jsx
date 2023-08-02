@@ -12,8 +12,8 @@ const Home = () => {
   const { userData, setUserData } = useContext(UserContext)
   const logged = userData.logged
   return <>
-    <Header />
     <div className="home-container">
+      {logged === true ? <Header /> : null}
       {logged === false ? <Login /> : null}
       {logged === true ? <section className="welcome">
         <article className="max-security">
@@ -25,7 +25,7 @@ const Home = () => {
 
       <section className="buttons">
         <button className="nav-link"><Link to='/consejosseguridad'>Consejos seguridad</Link></button>
-        <button className="nav-link"><Link to='/pronostico'>Pronosticos meteorologicos</Link></button>
+        <button className="nav-link"><Link to='/eltiempo'>Pronosticos meteorologicos</Link></button>
         <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
         <button className="nav-link"><Link to='/alimentación'>alimentacion</Link></button>
         <button className="nav-link"><Link to='/recordatoriohidratacion'>Recordatorio de hidratación</Link></button>
@@ -38,32 +38,41 @@ const Home = () => {
           <article>
             <h3>Consejos de seguridad</h3>
             <p>Descubre nuestros consejos prácticos y especializados para protegerte durante olas de calor y asegurar un entrenamiento seguro y placentero.</p>
-            <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
-          </article>
-          <article>
-            <h3>Pronóstico y alertas meteorologicas</h3>
-            <p>Informate con detalle sobre las temperaturas máximas y mínimas, niveles de humedad y recibe alertas para planificar tus entrenamientos al aire libre.</p>
+            <img src="./foto4.jpeg" alt="" />
             <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
           </article>
         </section>
-
+        <section className="weather">
+          <article>
+            <h3>Pronóstico meteorologicas</h3>
+            <p>Informate con detalle sobre las temperaturas máximas y mínimas, niveles de humedad y recibe alertas para planificar tus entrenamientos al aire libre.</p>
+            <img src="./foto10.jpeg" alt="" />
+            <button className="nav-link"><Link to='/consejosseguridad'>acceder</Link></button>
+          </article>
+        </section>
         <section className="routes">
           <article>
-            <h3>Mapa de rutas recomendadas</h3>
+            <h3>Rutas recomendadas</h3>
             <p>Encuentra los mejores caminos y zonas de sombra para que disfrutes del deporte sin preocupaciones en entornos frescos y protegidos.</p>
+            <img src="./foto6.jpeg" alt="" />
             <button className="nav-link"><Link to='/map'>acceder</Link></button>
           </article>
         </section>
 
         <section className="adaptation">
           <article>
-            <h3>adaptación y aclimatación</h3>
+            <h3>Aclimatación y Adaptación</h3>
             <p>Aprende a adaptarte al calor gradualmente y optimiza tu rendimiento deportivo durante las olas de calor, sacando el máximo provecho de tu entrenamiento</p>
+            <img src="./foto3.jpeg" alt="" />
             <button className="nav-link"><Link to='/alimentacion'>acceder</Link></button>
           </article>
+        </section>
+
+        <section className="hidratacion">
           <article>
-            <h3>recordatorio de hidratación</h3>
+            <h3>Recordatorio de hidratación</h3>
             <p>Recibe notificaciones personalizadas para mantener tu cuerpo bien hidratado y asegurar tu mejor desempeño deportivo.</p>
+            <img src="./foto8.jpeg" alt="" />
             <button className="nav-link"><Link to='/recordatoriohidratacion'>acceder</Link></button>
           </article>
         </section>
@@ -72,14 +81,16 @@ const Home = () => {
           <article>
             <h3>Comunidad y apoyo</h3>
             <p>Conecta con otros deportistas apasionados, comparte tus experiencias y recibe apoyo para mantenerte motivado y alcanzar tus objetivos deportivos.</p>
+            <img src="./foto9.jpeg" alt="" />
             <button className="nav-link"><Link to='/foro'>acceder</Link></button>
           </article>
         </section>
 
         <section className="natural-resources">
           <article>
-            <h3>Recursos naturales</h3>
+            <h3>Recursos adicionales</h3>
             <p>Accede a una selección de recursos que mejorarán tu práctica deportiva y te permitirán estar siempre preparado para tus entrenamientos</p>
+            <img src="./foto2.jpeg" alt="" />
             <button className="nav-link"><Link to='/recursosnaturales'>acceder</Link></button>
           </article>
         </section>

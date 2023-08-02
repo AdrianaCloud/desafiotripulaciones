@@ -9,7 +9,7 @@ const NavBar = ({ onCloseMenu }) => {
         <li><Link to='/cuestionario' onClick={onCloseMenu}>cuestionario</Link></li>
         <li><Link to='/miperfil' onClick={onCloseMenu}>Mi Perfil</Link></li>
         <li><Link to='/consejosseguridad' onClick={onCloseMenu}>Consejos seguridad</Link></li>
-        <li><Link to='/pronostico' onClick={onCloseMenu}>Pronosticos meteorologicos</Link></li>
+        <li><Link to='/eltiempo' onClick={onCloseMenu}>Pronosticos meteorologicos</Link></li>
         <li><Link to='/mapa' onClick={onCloseMenu}>Mapa de ruta</Link></li>
         <li><Link to='/alimentación' onClick={onCloseMenu}>alimentacion</Link></li>
         <li><Link to='/foro' onClick={onCloseMenu}>Comunidad de apoyo</Link></li>

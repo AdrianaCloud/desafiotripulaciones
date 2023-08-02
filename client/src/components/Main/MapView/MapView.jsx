@@ -12,7 +12,7 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet/dist/leaflet.css';
 import axios from "axios";
 import { IonIcon } from '@ionic/react';
-import { calendar, calendarOutline, homeOutline, informationCircleOutline, mapOutline, optionsOutline, personOutline, search, star, storefront, sunnyOutline, waterOutline } from 'ionicons/icons';
+import { calendar, homeOutline, mapOutline, optionsOutline, personOutline, search, star, storefront, sunnyOutline, waterOutline } from 'ionicons/icons';
 
 
 const Map = () => {

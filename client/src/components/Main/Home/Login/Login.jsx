@@ -28,14 +28,14 @@ const Login = () => {
 
     const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailValidation.test(email)) {
-      setEmailMessage("Email must have a valid format");
+      setEmailMessage("El Email debe de tenr un formato valido");
     } else {
       setEmailMessage("");
     }
 
     const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{9,}$/;
     if (!passwordValidation.test(password)) {
-      setPasswordMessage("Password must contain lowercase, uppercase, digit, and special character, and be at least 9 characters long");
+      setPasswordMessage("Contraseña debe de tener al menos un caracter en minúsculas, mayusculas, un numero, un caracter especial y 9 dígitos");
     } else {
       setPasswordMessage("");
     }
@@ -74,18 +74,16 @@ const Login = () => {
 
   return (
     <div className="login-container">
-
-      <h2>Log in</h2>
       <img src="./logo/lOGO.png" alt="" />
       <form action="" className="auth-forms" onSubmit={handleLogin} id="login-form">
-        <input name="logInEmail" type="text" placeholder="Write your email" disabled={isLoginBlocked} />
+        <input name="logInEmail" type="text" placeholder="Correo electrónico" disabled={isLoginBlocked} />
         {emailMessage && <p className="error-message">{emailMessage}</p>}
-        <input name="logInPassword" type="password" placeholder="Write your password" disabled={isLoginBlocked} />
+        <input name="logInPassword" type="password" placeholder="Contraseña" disabled={isLoginBlocked} />
         {passwordMessage && <p className="error-message">{passwordMessage}</p>}
-        {isLoginBlocked && <p className="error-message">Login is blocked. Please try again after 5 minutes.</p>}
+        {isLoginBlocked && <p className="error-message">El inicio de sesion se ha bloqueado, intentalo de nuevo en 5 minutos.</p>}
         <button type="submit" className="form-btn" disabled={isLoginBlocked}>Log in</button>
       </form>
-      <button className="register-btn"><Link to='/register' >Register</Link></button>
+      <button className="register-btn"><Link to='/register' >Registrate</Link></button>
       <section className="sign-in-with">
         <p>Iniciar sesíon con</p>
         <section className="sign-in-btns">

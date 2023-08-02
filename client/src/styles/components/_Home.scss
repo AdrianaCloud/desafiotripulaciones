@@ -15,6 +15,11 @@ h2 {
     font-family: $montserrat;
 }
 
+h3 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
 a {
     text-decoration: none;
     color: black
@@ -22,6 +27,13 @@ a {
 
 p {
     text-align: left;
+    font-size: 20px;
+}
+
+img {
+    width: 80%;
+    border-radius: 20px;
+    margin-bottom: 25px;
 }
 
 button {
@@ -63,23 +75,45 @@ button {
     justify-content: space-around;
     border-radius: 40px;
     padding: 10px;
-    margin-bottom: 50px;
-    margin: $page-margin;
-}
+    margin: 70px;
 
-.routes,
-.adaptation,
-.comunity,
-.natural-resources,
-.security-advice {
-    display: flex;
-    margin-bottom: 50px;
-    margin: $page-margin;
-
-    article {
-        @include articleDisplay
+    a {
+        color: white;
     }
 }
+
+.articles {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .routes,
+    .adaptation,
+    .comunity,
+    .natural-resources,
+    .security-advice,
+    .hidratacion,
+    .weather {
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-bottom: 50px;
+        margin: $page-margin;
+
+        a {
+            color: white;
+        }
+
+        article {
+            @include articleDisplay;
+
+        }
+    }
+}
+
 
 .footer {
     display: flex;
@@ -130,6 +164,10 @@ button {
 }
 
 @media (max-width: 460px) {
+    .img {
+        width: 100%
+    }
+
     .max-security {
 
         img {

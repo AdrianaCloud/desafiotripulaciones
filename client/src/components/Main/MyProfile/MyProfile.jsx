@@ -64,9 +64,9 @@ const MyProfile = ({ onQuery }) => {
                 null}
         </p>
         <p className="info-title">Preferencias deportivas </p>
-        {displayInfo?.preferencias_deportivas && displayInfo?.preferencias_deportivas.length > 0 ?
+        <p className="info-container"> {displayInfo?.preferencias_deportivas && displayInfo?.preferencias_deportivas.length > 0 ?
           displayInfo.preferencias_deportivas.join(", ") :
-          ''}
+          ''}</p>
         <p className="info-title">tipo de dieta </p>
         <p className="info-container"> {displayInfo?.tipo_de_dieta ? displayInfo.tipo_de_dieta : null}</p>
         <p className="info-title">objetivo del entrenamiento </p>
