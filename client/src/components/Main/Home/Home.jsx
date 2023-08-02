@@ -51,7 +51,7 @@ const Home = () => {
           <article>
             <h3>Mapa de rutas recomendadas</h3>
             <p>Encuentra los mejores caminos y zonas de sombra para que disfrutes del deporte sin preocupaciones en entornos frescos y protegidos.</p>
-            <button className="nav-link"><Link to='/map'>acceder</Link></button>
+            <button className="nav-link"><Link to='/mapa'>acceder</Link></button>
           </article>
         </section>
 
