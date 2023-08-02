@@ -5,10 +5,6 @@
     font-family: $nunito;
 }
 
-.home-container {
-    background-color: $neutral;
-}
-
 h1 {
     color: $primary-color;
     font-family: $montserrat;
@@ -25,11 +21,17 @@ a {
 }
 
 p {
-    text-align: center;
+    text-align: left;
 }
 
 button {
     @include button
+}
+
+.max-security {
+    h2 {
+        text-align: left;
+    }
 }
 
 .welcome {
@@ -37,6 +39,10 @@ button {
     flex-direction: row;
     width: 30%;
     margin: $page-margin;
+}
+
+.logo-welcome {
+    width: 15%;
 }
 
 .buttons {
