@@ -58,20 +58,6 @@ const UserForm = () => {
   const [showSports, setShowSports] = useState(false);
   const [userPreferences, setUserPreferences] = useState({});
 
-  useEffect(() => {
-    const completeProfile = async () => {
-      try {
-        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', userPreferences);
-
-        console.log(response);
-        navigate('/miperfil')
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    completeProfile();
-  }, [userPreferences]);
 
   const handleToggleSports = () => {
     setShowSports(!showSports);
@@ -92,20 +78,19 @@ const UserForm = () => {
       "user_id": userData.email,
       "preferencias_deportivas": selectedSports,
       "tipo_de_dieta": e.target.tipoDieta.value,
-      "ciudad": e.target.ciudad.value,
       "objetivo_entrenamiento": parseInt(e.target.objetivoEntrenamiento.value),
-      "sexo": e.target.genero.value,
+      "ciudad": e.target.ciudad.value,
+      "edad": parseInt(e.target.edad.value, 10),
+      "sexo": parseInt(e.target.genero.value),
       "peso": parseInt(e.target.peso.value),
       "condicion": parseInt(e.target.nivelActividad.value),
-      "edad": parseInt(e.target.edad.value, 10),
       "altura": parseFloat(e.target.altura.value)
     }
-    setUserPreferences(userPreferences)
+    const request = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil", userPreferences);
+    setUserPreferences(userPreferences);
     console.log(userPreferences);
-    /* const request = await axios.post("https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil", userPreferences);
-    if (request.data === 201) {
-      console.log("user has profile info");
-    }; */
+
+    console.log(request)
 
 
   };
@@ -154,9 +139,9 @@ const UserForm = () => {
 
             <select name="tipoDieta" id="tipoDieta">
               <option value="">Tipo de dieta</option>
-              <option value="vegetariana">Vegetariana</option>
-              <option value="vegana">Vegana</option>
-              <option value="omnívora">Omnívora</option>
+              <option value="Vegetariana">Vegetariana</option>
+              <option value="Vegana">Vegana</option>
+              <option value="Omnívora">Omnívora</option>
             </select>
           </section>
 
@@ -169,10 +154,10 @@ const UserForm = () => {
               <option value="2">fuerte</option>
             </select>
 
-            <select name="genero" id="genero">
+            <select name="sexo" id="genero">
               <option value="">Género</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Femenino">Femenino</option>
+              <option value="0">Masculino</option>
+              <option value="1">Femenino</option>
               <option value="Prefiero no revelarlo">Prefiero no revelarlo</option>
             </select>
           </section>
