@@ -24,15 +24,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     const completeProfile = async () => {
-      try {
-        const response = await axios.update('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
 
-        });
-
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
     }
 
     completeProfile();
@@ -54,18 +46,30 @@ const EditProfile = () => {
     e.preventDefault()
     const editedUserPreferences = {
       "user_id": userData.email,
-      "condicion": e.target.nivelActividad.value,
       "preferencias_deportivas": selectedSports,
       "tipo_de_dieta": e.target.tipoDieta.value,
-      "objetivo_de_entrenamiento": e.target.objetivoEntrenamiento.value,
+      "objetivo_entrenamiento": parseInt(e.target.objetivoEntrenamiento.value),
       "ciudad": e.target.ciudad.value,
-      "altura": parseFloat(e.target.altura.value),
-      "peso": e.target.peso.value,
       "edad": parseInt(e.target.edad.value, 10),
-      "sexo": e.target.genero.value
+      "sexo": parseInt(e.target.genero.value),
+      "peso": parseInt(e.target.peso.value),
+      "condicion": parseInt(e.target.nivelActividad.value),
+      "altura": parseFloat(e.target.altura.value)
+    }
+    console.log(editedUserPreferences)
+    try {
+      const response = await axios.put('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
+
+      });
+
+      console.log(response);
+      console.log(editedUserPreferences)
+    } catch (error) {
+      console.log(error);
     }
     setEditedUserPreferences(editedUserPreferences)
   }
+  console.log(editedUserPreferences)
 
   return <>
     <section className="edit-profile-container">
@@ -111,6 +115,7 @@ const EditProfile = () => {
           <option value="vegana">Vegana</option>
           <option value="omnívora">Omnívora</option>
         </select>
+
         <p className="info-title">objetivo del entrenamiento </p>
         <select name="objetivoEntrenamiento" id="objetivoEntrenamiento">
           <option value="">Elige una opción</option>
@@ -118,19 +123,27 @@ const EditProfile = () => {
           <option value="1">medio</option>
           <option value="2">fuerte</option>
         </select>
+
         <p className="info-title">altura </p>
-        <input type="text" className="input-edit-data" />
+        <input type="text" name="altura" className="input-edit-data" />
+
         <p className="info-title">Peso </p>
-        <input type="text" className="input-edit-data" />
+        <input type="text" name="peso" className="input-edit-data" />
+
         <p className="info-title">Genero </p>
-        <select name="genero" id="genero">
+        <select name="sexo" id="genero">
+
           <option value="">Género</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
+          <option value="0">Masculino</option>
+          <option value="1">Femenino</option>
           <option value="Prefiero no revelarlo">Prefiero no revelarlo</option>
         </select>
         <p className="info-title">Edad </p>
-        <input type="text" className="input-edit-data" />
+        <input type="text" name="edad" className="input-edit-data" />
+
+        <p className="info-title">Ciudad </p>
+        <input type="text" name="ciudad" className="input-edit-data" />
+
         <button id="edit-profile-btn">Enviar</button>
       </form>
     </section>
