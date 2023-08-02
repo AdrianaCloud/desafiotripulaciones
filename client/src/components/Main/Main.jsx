@@ -38,7 +38,7 @@ const Main = () => {
           path="login" />
 
         <Route
-          path='map'
+          path='mapa'
           element={
             <ProtectedRoutes
               component={

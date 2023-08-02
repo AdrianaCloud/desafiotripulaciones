@@ -2,9 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../context/userContext';
+import { IonIcon } from '@ionic/react';
+import { arrowBackOutline } from "ionicons/icons";
 
 const UserForm = () => {
   const { userData, setUserData } = useContext(UserContext)
+  console.log(userData)
   const navigate = useNavigate();
   const sportOptions = ['Aeróbicos acuáticos', 'Aeróbicos_1.0', 'Aeróbicos_2.0', 'Aeróbicos_3.0', 'Artes marciales', 'Atletismo_1.0', 'Atletismo_2.0', 'Atletismo_3.0', 'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo', 'Bádminton', 'Béisbol', 'Calistenia_1.0', 'Calistenia_2.0', 'Calva', 'Caminar_1.0', 'Caminar_2.0', 'Caminar_3.0', 'Chito', 'Ciclismo estacionario_1.0', 'Ciclismo estacionario_2.0', 'Ciclismo estacionario_3.0', 'Ciclismo estacionario_4.0', 'Ciclismo estacionario_5.0', 'Ciclismo_1.0', 'Ciclismo_2.0', 'Ciclismo_3.0', 'Ciclismo_4.0', 'Ciclismo_5.0',
     'Correr',
@@ -90,7 +93,7 @@ const UserForm = () => {
       "preferencias_deportivas": selectedSports,
       "tipo_de_dieta": e.target.tipoDieta.value,
       "ciudad": e.target.ciudad.value,
-      "objetivo_de_entrenamiento": parseInt(e.target.objetivoEntrenamiento.value),
+      "objetivo_entrenamiento": parseInt(e.target.objetivoEntrenamiento.value),
       "sexo": e.target.genero.value,
       "peso": parseInt(e.target.peso.value),
       "condicion": parseInt(e.target.nivelActividad.value),
@@ -107,9 +110,13 @@ const UserForm = () => {
 
   };
 
+  const handleGoBackBtn = () => {
+    navigate(-1)
+  }
   return (
     <>
       <section className="user-form">
+        <IonIcon icon={arrowBackOutline} className="icon arrow-back" onClick={handleGoBackBtn} />
         <img src="./logo/lOGO(1).png" alt="" />
         <h3>¡vamos a conocerte mejor!</h3>
         <form action="" onSubmit={handleForm}>

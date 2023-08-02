@@ -4,6 +4,7 @@ import { UserContext } from '../../../../../context/userContext';
 
 const EditProfile = () => {
   const { userData, setUserData } = useContext(UserContext);
+
   const sportOptions = ['Aeróbicos', 'Aeróbicos acuáticos', 'Artes marciales', 'Atletismo',
     'BMX', 'Baloncesto', 'Balonmano', 'Billar', 'Bolos', 'Boxeo',
     'Bádminton', 'Béisbol', 'Calistenia', 'Calva', 'Caminar', 'Chito',
@@ -17,6 +18,9 @@ const EditProfile = () => {
     'Sóftbol', 'Tai chi', 'Tenis', 'Tenis de mesa', 'Tenis en pareja',
     'Ultimate frisbee', 'Voleibol', 'Voleibol acuático', 'Waterpolo',
     'Yoga'];
+  const [selectedSports, setSelectedSports] = useState([]);
+  const [showSports, setShowSports] = useState(false);
+  const [editedUserPreferences, setEditedUserPreferences] = useState({});
 
   useEffect(() => {
     const completeProfile = async () => {
@@ -33,9 +37,7 @@ const EditProfile = () => {
 
     completeProfile();
   }, [editedUserPreferences]);
-  const [selectedSports, setSelectedSports] = useState([]);
-  const [showSports, setShowSports] = useState(false);
-  const [editedUserPreferences, setEditedUserPreferences] = useState({});
+
   const handleToggleSports = () => {
     setShowSports(!showSports);
   };

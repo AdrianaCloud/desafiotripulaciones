@@ -60,3 +60,48 @@
         }
     }
 }
+
+
+@media (min-height: 1024px) {
+    .publication-container {
+        align-items: start;
+        width: 70%;
+        border: 4px solid black;
+        padding: 20px 0px 0px 40px;
+        margin: 25px;
+
+        //titulo
+        h2 {
+            font-size: 1.5em;
+        }
+
+        //text
+        p {
+            font-size: 1.5em;
+        }
+
+        .user-publication-info {
+
+            img {
+                width: 10%;
+            }
+
+            .user-info {
+
+                //persona
+                h2 {
+                    font-size: 2em;
+                }
+
+                //fecha
+                h3 {
+                    font-size: 1.5em;
+                    margin: 0;
+                    align-self: flex-start;
+                    color: rgb(141, 141, 141);
+                }
+            }
+        }
+    }
+
+}

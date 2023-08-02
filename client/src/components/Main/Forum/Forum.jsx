@@ -1,8 +1,11 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { UserContext } from "../../../context/userContext";
 import PublicationCard from "./PublicationCard";
+import { IonIcon } from '@ionic/react';
+import { arrowBackOutline } from "ionicons/icons";
 
 const Forum = () => {
   const [publication, setPublication] = useState({});
@@ -10,7 +13,7 @@ const Forum = () => {
   const [publicationsList, setPublicationsList] = useState([])
 
   const { userData, setUserData } = useContext(UserContext)
-
+  const navigate = useNavigate();
   useEffect(() => {
     const getPublications = async () => {
       const data = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/publications")
@@ -46,13 +49,20 @@ const Forum = () => {
 
     setPublication(publication)
   }
+
+  const handleGoBackBtn = () => {
+    navigate(-1)
+  }
+
   return <>
+
     <section className="post-publication-form">
+      <IonIcon icon={arrowBackOutline} className="icon arrow-back" onClick={handleGoBackBtn} />
       <h2>Publica tu comentario!</h2>
       <form action="" onSubmit={handlePublicationForm}>
         <div className="input-text-form">
           <label htmlFor="titulo">Título</label>
-          <input name="titulo" id="titulo" type="text" placeholder="Introduce un titulo para la publicacion" />
+          <input name="titulo" id="titulo" type="text" placeholder="titulo de publicacion" />
         </div>
 
         <div className="input-text-form">
@@ -62,16 +72,16 @@ const Forum = () => {
         <button type="submit" className="form-btn">Enviar</button>
       </form>
     </section>
-    
+
     {publicationsList.length ?
 
       <article className="publications-container">
-      {
-        publicationsList.map((item, index) => <PublicationCard key={index} title={item.title} text={item.text} date={item.date.value} user_id={item.user_id} className="publication"></PublicationCard>) 
-      }
+        {
+          publicationsList.map((item, index) => <PublicationCard key={index} title={item.title} text={item.text} date={item.date.value} user_id={item.user_id} className="publication"></PublicationCard>)
+        }
       </article>
 
-    : <></>}
+      : <></>}
   </>;
 };
 

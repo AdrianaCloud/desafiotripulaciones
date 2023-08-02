@@ -6,8 +6,6 @@
 } */
 
 .profile-container {
-    margin: -20px 0px 0px 0px;
-
     .black-box {
         width: 100%;
         height: 100px;
@@ -23,14 +21,18 @@
 
         h3 {
             color: white;
-            margin: 0px 0px 10px 150px
+            position: relative;
+            top: -20px;
+            left: 160px;
         }
 
         img {
             width: 65px;
             height: 60px;
             border-radius: 50%;
-            margin: -30px 0px 70px 30px;
+            position: relative;
+            top: -50px;
+            left: 4px;
             border: 1px solid black;
         }
     }
@@ -95,5 +97,20 @@
 @media (min-width: 1024px) {
     .info {
         margin: -60px 40px 0px;
+    }
+
+    .profile-container {
+        .black-box {
+            h3 {
+                top: 17px;
+                left: 245px;
+            }
+
+            img {
+                top: -14px;
+                left: 4px;
+
+            }
+        }
     }
 }

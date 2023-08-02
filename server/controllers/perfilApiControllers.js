@@ -8,7 +8,7 @@ const getPerfiles = async (req, res) => {
 
         let data
 
-        if(user_id) {
+        if (user_id) {
             data = await perfilModels.getPerfilByUserId(user_id)
         } else {
             data = await perfilModels.getPerfiles()
@@ -16,25 +16,26 @@ const getPerfiles = async (req, res) => {
 
         res.status(200).json(data)
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 }
 
 const updatePerfil = async (req, res) => {
-    const { preferencias_deportivas, tipo_de_dieta, objetivo_entrenamiento, edad, sexo, peso, condicion, altura, user_id } = req.body
+    const { user_id, preferencias_deportivas, tipo_de_dieta, ciudad, objetivo_entrenamiento, sexo, peso, condicion, edad, altura } = req.body
     try {
         let data
-        
+
         const perfilData = {
+            user_id,
             preferencias_deportivas,
             tipo_de_dieta,
+            ciudad,
             objetivo_entrenamiento,
-            edad,
             sexo,
             peso,
             condicion,
-            altura,
-            user_id
+            edad,
+            altura
         }
 
         // Check if the email already exists
@@ -48,12 +49,12 @@ const updatePerfil = async (req, res) => {
 
         res.status(200).json(data)
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 }
 
 const createPerfil = async (req, res) => {
-    const { user_id, preferencias_deportivas, tipo_de_dieta, ciudad, objetivo_entrenamiento, edad, sexo, peso, condicion, altura } = req.body
+    const { user_id, preferencias_deportivas, tipo_de_dieta, ciudad, objetivo_entrenamiento, sexo, peso, condicion, edad, altura } = req.body
     try {
         let data
 
@@ -71,10 +72,10 @@ const createPerfil = async (req, res) => {
             tipo_de_dieta,
             ciudad,
             objetivo_entrenamiento,
-            edad,
             sexo,
             peso,
             condicion,
+            edad,
             altura
         }
 
@@ -82,7 +83,7 @@ const createPerfil = async (req, res) => {
 
         res.status(200).json(data)
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 }
 

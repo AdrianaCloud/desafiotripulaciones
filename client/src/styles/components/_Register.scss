@@ -5,14 +5,93 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('../../../public/fondologin.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Use 'cover' to scale the image to cover the entire container */
+    background-position: center center;
+    background-position-y: -180px;
 
-    img {
-        width: 60vw;
-        margin-bottom: 100px;
-    }
+
 
     .error {
         color: red;
+        @import '../utils/variables.scss';
+        @import '../utils/mixings.scss';
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+            align-items: center;
+            background-image: url('../../../public/fondologin.png');
+            background-repeat: no-repeat;
+            background-position-y: -40px;
+
+            img {
+                width: 60vw;
+                margin-bottom: 100px;
+            }
+
+            input {
+                @include input
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 80%;
+
+            }
+
+            .form-btn {
+                margin: 30px 0 0px 0;
+                width: 80%;
+
+            }
+
+            .register-btn {
+                width: 65%;
+                margin-top: 30px;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sign-in-with {
+                position: relative;
+                right: 60px;
+                margin-top: 30px;
+                font-size: 15px;
+                font-weight: bold;
+
+                p {
+                    position: relative;
+                    right: 15px;
+                }
+            }
+
+            .sign-in-icon {
+                margin-right: 20px;
+                font-size: 30px;
+            }
+
+            .sign-in-btns {
+                margin-bottom: 50px;
+
+            }
+        }
+
+
+
+
+
+
         font-size: 3vw;
     }
 
@@ -34,11 +113,16 @@
 }
 
 @media (min-width: 1000px) {
-    img {
-        width: 20vw;
-    }
-
-    form {
-        width: 40%;
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url('../../../public/fondologin.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Use 'cover' to scale the image to cover the entire container */
+        background-position: center center;
+        background-position-y: -280px;
+        padding-bottom: 660px;
     }
 }

@@ -28,9 +28,22 @@ button {
     @include button
 }
 
+.log-in-first {
+    margin: 30px 0px 20px;
+
+    span {
+        font-weight: bold;
+    }
+
+}
+
 .max-security {
     h2 {
         text-align: left;
+    }
+
+    img {
+        display: none;
     }
 }
 
@@ -117,6 +130,14 @@ button {
 }
 
 @media (max-width: 460px) {
+    .max-security {
+
+        img {
+            display: grid;
+            position: relative;
+            left: 150px
+        }
+    }
 
     .routes,
     .adaptation,

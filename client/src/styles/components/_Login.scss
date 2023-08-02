@@ -73,11 +73,48 @@
 
 
 @media (min-width: 1000px) {
-    img {
-        width: 20vw;
+
+    .login-container {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 20px 10px 0px 10px;
+        padding-bottom: 80px;
+
+        img {
+            width: 20%;
+            margin-top: 40px;
+        }
     }
+
 
     form {
         width: 40%;
+
+        .form-btn {
+            padding: 15px 0px;
+        }
     }
+
+    .register-btn {
+        padding: 15px 0px;
+
+    }
+
+    .sign-in-with {
+        position: relative;
+        right: 60px;
+        margin-top: 30px;
+        font-size: 15px;
+        font-weight: bold;
+
+        p {
+            position: relative;
+            right: 15px;
+            font-size: 25px;
+        }
+
+
+    }
+
+
 }

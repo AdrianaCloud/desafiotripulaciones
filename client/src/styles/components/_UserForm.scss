@@ -8,8 +8,16 @@
     flex-direction: column;
     height: 100vh;
 
+    .arrow-back {
+        font-size: 60px;
+        position: relative;
+        right: 700px;
+        top: 70px;
+    }
+
     img {
         width: 30%;
+
     }
 
     h2 {
@@ -81,6 +89,20 @@
 
 @media (max-width: 460px) {
     .user-form {
+        position: relative;
+
+        .arrow-back {
+            font-size: 35px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        img {
+            margin-top: 50px;
+        }
+
         form {
             div {
                 grid-template-columns: 1fr;
