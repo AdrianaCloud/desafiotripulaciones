@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from '../../../../../context/userContext';
 
-const EditProfile = () => {
+const EditProfile = ({ query }) => {
   const { userData, setUserData } = useContext(UserContext);
 
   const sportOptions = ['Aeróbicos', 'Aeróbicos acuáticos', 'Artes marciales', 'Atletismo',
@@ -21,14 +21,26 @@ const EditProfile = () => {
   const [selectedSports, setSelectedSports] = useState([]);
   const [showSports, setShowSports] = useState(false);
   const [editedUserPreferences, setEditedUserPreferences] = useState({});
+  console.log(query)
 
   useEffect(() => {
-    const completeProfile = async () => {
-
+    // Whenever the 'query' state is updated, check if it has data and set the form data accordingly
+    if (query && Object.keys(query).length > 0) {
+      setSelectedSports(query.preferencias_deportivas);
+      setEditedUserPreferences({
+        user_id: userData.email,
+        preferencias_deportivas: query.preferencias_deportivas,
+        tipo_de_dieta: query.tipo_de_dieta,
+        objetivo_entrenamiento: query.objetivo_entrenamiento,
+        ciudad: query.ciudad,
+        edad: query.edad,
+        sexo: query.sexo,
+        peso: query.peso,
+        condicion: query.condicion,
+        altura: query.altura,
+      });
     }
-
-    completeProfile();
-  }, [editedUserPreferences]);
+  }, [query, userData.email]);
 
   const handleToggleSports = () => {
     setShowSports(!showSports);
@@ -57,19 +69,33 @@ const EditProfile = () => {
       "altura": parseFloat(e.target.altura.value)
     }
     console.log(editedUserPreferences)
-    try {
-      const response = await axios.put('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
+    if (query && Object.keys(query).length > 0) {
+      try {
+        const response = await axios.put('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
+        });
+        console.log(query)
+        console.log(response);
+        console.log(editedUserPreferences)
+      } catch (error) {
+        console.log(error);
+      }
+      setEditedUserPreferences(editedUserPreferences)
+    } else {
+      try {
+        const response = await axios.post('https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil', editedUserPreferences, {
 
-      });
+        });
 
-      console.log(response);
-      console.log(editedUserPreferences)
-    } catch (error) {
-      console.log(error);
+        console.log(response);
+        console.log(editedUserPreferences)
+      } catch (error) {
+        console.log(error);
+      }
+      setEditedUserPreferences(editedUserPreferences)
     }
-    setEditedUserPreferences(editedUserPreferences)
   }
   console.log(editedUserPreferences)
+
 
   return <>
     <section className="edit-profile-container">
@@ -111,9 +137,9 @@ const EditProfile = () => {
         <p className="info-title">tipo de dieta </p>
         <select name="tipoDieta" id="tipoDieta">
           <option value="">Elige una opción</option>
-          <option value="vegetariana">Vegetariana</option>
-          <option value="vegana">Vegana</option>
-          <option value="omnívora">Omnívora</option>
+          <option value="Vegetariana">Vegetariana</option>
+          <option value="Vegana">Vegana</option>
+          <option value="Omnívora">Omnívora</option>
         </select>
 
         <p className="info-title">objetivo del entrenamiento </p>

@@ -21,6 +21,9 @@ const Main = () => {
   //  const location = useLocation();
 
   const { userData, setUserData } = useContext(UserContext)
+  const [query, setQuery] = useState({})
+
+
 
   return (
     <>
@@ -59,7 +62,7 @@ const Main = () => {
             <ProtectedRoutes
               component={
                 <RoleManager
-                  component={<MyProfile />}
+                  component={<MyProfile onQuery={setQuery} />}
                   role={userData.role}
                   allowedRoles={["user"]}
                 />
@@ -75,7 +78,7 @@ const Main = () => {
             <ProtectedRoutes
               component={
                 <RoleManager
-                  component={<EditProfile />}
+                  component={<EditProfile query={query} />}
                   role={userData.role}
                   allowedRoles={["user"]}
                 />
