@@ -6,6 +6,30 @@
      border-radius: 5vw 5vw 5vw 5vw;
  }
 
+ .filters-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .slider-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+
+        .MuiSlider-root.MuiSlider-colorPrimary.MuiSlider-sizeMedium.filter-slider.css-187mznn-MuiSlider-root {
+            width: 100%;
+        }
+
+        .slider-title {
+            align-self: flex-start;
+        }
+    }
+ }
+
  /*  div.leaflet-control-zoom.leaflet-bar.leaflet-control {
      border: none
  }
