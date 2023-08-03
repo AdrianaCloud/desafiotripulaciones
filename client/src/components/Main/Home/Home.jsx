@@ -55,7 +55,7 @@ const Home = () => {
             <h3>Rutas recomendadas</h3>
             <p>Encuentra los mejores caminos y zonas de sombra para que disfrutes del deporte sin preocupaciones en entornos frescos y protegidos.</p>
             <img src="./foto6.jpeg" alt="" />
-            <button className="nav-link"><Link to='/map'>acceder</Link></button>
+            <button className="nav-link"><Link to='/mapa'>acceder</Link></button>
           </article>
         </section>
 
@@ -109,7 +109,7 @@ const Home = () => {
                 <IonIcon icon={star} className="icon star" />
                 <IonIcon icon={star} className="icon star" />
               </div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, consequuntur explicabo minus porro incidunt praesentium, veritatis, expedita deserunt aperiam error sequi repellat. Obcaecati sint maxime, id vitae eos quaerat quas dicta, architecto quos a impedit culpa. Tenetur minus suscipit culpa possimus, voluptatem sunt ad quibusdam dolor quo impedit tempore asperiores? Dicta sint placeat, eum ea saepe ad necessitatibus exercitationem quis.</p>
+              <p>¡SportCool es increíble! Esta app ha sido un salvavidas para mis actividades deportivas al aire libre. Con solo unos toques, obtengo pronósticos precisos para elegir el deporte perfecto en función del clima. ¡No puedo imaginar mi vida deportiva sin ella! 100% recomendada. 👌🌞🌧️ #SportCool #DeporteSegúnElClima</p>
             </article>
             <article>
               <IonIcon icon={peopleCircleOutline} className="icon" />
@@ -120,7 +120,7 @@ const Home = () => {
                 <IonIcon icon={star} className="icon star" />
                 <IonIcon icon={starHalf} className="icon star" />
               </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam quasi quisquam sit soluta beatae. Dolorem maxime atque soluta temporibus. Temporibus nemo molestias porro maxime, laborum officiis praesentium! Ratione ullam deleniti, dolorem nesciunt voluptate numquam ipsam cumque, recusandae accusantium dicta natus.</p>
+              <p>¡SportCool es la app ideal para todos los aficionados a los deportes al aire libre! Su interfaz sencilla y pronósticos precisos hacen que planificar mis actividades deportivas sea pan comido. Nunca más me sorprenderé con un clima inesperado mientras hago ejercicio. ¡La recomiendo ampliamente para maximizar la diversión bajo el sol o la lluvia! 🌞🌧️ #SportCool #DeportesAdaptadosAlClima</p>
             </article>
           </div>
         </section>

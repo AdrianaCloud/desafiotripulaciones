@@ -25,6 +25,7 @@ const Map = () => {
   const [distancia, setDistancia] = useState(20)
   const [similitud, setSimilitud] = useState(50)
   const [items, setItems] = useState([])
+  const [fuentesPiscinas, setFuentesPiscinas] = useState([])
 
   const { userData, setUserData } = useContext(UserContext)
 
@@ -33,32 +34,124 @@ const Map = () => {
     iconSize: [25, 25]
   })
 
+  const markerPiscinaIcon = new Icon({
+    iconUrl: './piscinas.svg',
+    iconSize: [30, 30]
+  })
+
+  const markerCentroDeportivoIcon = new Icon({
+    iconUrl: './centros_deportivos.svg',
+    iconSize: [30, 30]
+  })
+
+  const markerZonaVerdeIcon = new Icon({
+    iconUrl: './zona_verde.svg',
+    iconSize: [30, 30]
+  })
+
+  const markerFuentesPiscinasIcon = new Icon({
+    iconUrl: './fuentespiscinas.svg',
+    iconSize: [30, 30]
+  })
+
+  const markerCentrosaludIcon = new Icon({
+    iconUrl: './centrosalud.svg',
+    iconSize: [30, 30]
+  })
+
   function SetViewOnClick({ coords }) {
     const map = useMap();
     map.setView(coords, map.getZoom());
 
-    return null;
+    return <Marker icon={markerIcon} position={coords}>
+      <Popup>
+        <span>Estás aquí!</span>
+      </Popup>
+    </Marker>
+  }
+
+  function DisplayAdittionalMarkers({ marker }) {
+
+    const [markerData, setMarkerData] = useState({})
+
+    const map = useMap();
+
+    const getMarkerData = async () => {
+      const dataMarker = await axios.get(`http://localhost:5000/api/items/id/${marker.ID}`)
+      setMarkerData(dataMarker.data[0])
+    }
+
+    getMarkerData()
+
+    return <Marker icon={ markerData.TIPO === "PISCINA" || markerData.TIPO === "FUENTE" ? markerFuentesPiscinasIcon : markerCentrosaludIcon } position={[marker.LATITUD, marker.LONGITUD]}>
+      { markerData.NOMBRE ? (<Popup>
+          <div className="marker-info">
+          <h2>{markerData.NOMBRE}</h2>
+          <span>{markerData.DIRECCION}</span>
+          <a href={markerData.CONTENT_URL}>Sitio Web</a>
+          </ div>
+          </Popup>) : <></> }
+    </Marker>
   }
 
   function DisplayMarkers({ marker }) {
-    return <Marker icon={markerIcon} position={[marker.LATITUD, marker.LONGITUD]}>
+
+    const [markerData, setMarkerData] = useState({})
+
+    const map = useMap();
+
+    const getMarkerData = async () => {
+      const dataMarker = await axios.get(`http://localhost:5000/api/items/id/${marker.ID}`)
+      setMarkerData(dataMarker.data[0])
+    }
+
+    getMarkerData()
+
+    return <Marker icon={ markerData.TIPO === "PISCINA" ? markerPiscinaIcon : markerData.TIPO === "INSTALACIÓN DEPORTIVA" ? markerCentroDeportivoIcon : markerData.TIPO === "ZONA VERDE" ? markerZonaVerdeIcon : markerIcon } position={[marker.LATITUD, marker.LONGITUD]}>
+      <Popup>
+        { markerData.NOMBRE ? (
+          <div className="marker-info">
+          <h2>{markerData.NOMBRE}</h2>
+          <span>{markerData.DIRECCION}</span>
+          <a href={markerData.CONTENT_URL}>Sitio Web</a>
+          </ div>) : <span>Cargando...</span> }
+      </Popup>
     </Marker>
+  }
+
+  const getPiscinasYFuentes = () => {
+    const getData = async () => {
+
+      let fuentes = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/items/fuentes")
+      let piscinas = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/items/piscinas")
+
+      console.log(...fuentes.data, ...piscinas.data);
+      setFuentesPiscinas([...piscinas.data, ...fuentes.data])
+    }
+
+    getData()
+  }
+
+  const getCentrosDeSalud = () => {
+    const getData = async () => {
+
+      let centrosalud = await axios.get("https://backend-app-hbpdfkrhla-ew.a.run.app/api/items/centrosalud")
+      console.log(centrosalud.data);
+      setFuentesPiscinas(centrosalud.data)
+    }
+
+    getData()
   }
 
   const getPrediction = async () => {
 
-    // console.log(perfilData.preferencias_deportivas);
-
     const test = perfilData.preferencias_deportivas.map(elemento => `"${elemento}"`);
-    // console.log(test);
 
     const data = await axios.get(`https://data-api-hbpdfkrhla-ew.a.run.app/v1?edad=${perfilData.edad}&sexo=${perfilData.sexo}&peso=${perfilData.peso}&condicion=${perfilData.condicion}&objetivo=${perfilData.objetivo_entrenamiento}&preferencias=[${test}]&posicion=${weatherData.position}&distancia=${distancia}&clima=${weatherData.clima}&temperatura=${weatherData.temperatura}&humedad=${weatherData.humedad}&similitud=${similitud / 100}`)
     setItems(data.data["Items filtrados"])
-    // console.log(data.data["Items filtrados"]);
-    // console.log(`https://data-api-hbpdfkrhla-ew.a.run.app/v1?edad=${perfilData.edad}&sexo=${perfilData.sexo}&peso=${perfilData.peso}&condicion=${perfilData.condicion}&objetivo=${perfilData.objetivo_entrenamiento}&preferencias=[${perfilData.preferencias_deportivas}]&posicion=${weatherData.position}&distancia=${distancia}&clima=${weatherData.clima}&temperatura=${weatherData.temperatura}&humedad=${weatherData.humedad}&similitud=${similitud/100}`);
+    // console.log(data.data);
+    // console.log(`https://data-api-hbpdfkrhla-ew.a.run.app/v1?edad=${perfilData.edad}&sexo=${perfilData.sexo}&peso=${perfilData.peso}&condicion=${perfilData.condicion}&objetivo=${perfilData.objetivo_entrenamiento}&preferencias=[${test}]&posicion=${weatherData.position}&distancia=${distancia}&clima=${weatherData.clima}&temperatura=${weatherData.temperatura}&humedad=${weatherData.humedad}&similitud=${similitud/100}`);
   }
-
-
 
   useEffect(() => {
 
@@ -93,9 +186,9 @@ const Map = () => {
       <input type="text" placeholder="Buscar" />
       <IonIcon icon={search} className="icon search-icon" />
       <div className="btn-container">
-        <IonIcon icon={sunnyOutline} className="icon" />
-        <IonIcon icon={waterOutline} className="icon" />
-        <IonIcon icon={storefront} className="icon" />
+        {/* <IonIcon icon={sunnyOutline} className="icon" /> */}
+        <IonIcon onClick={() => getPiscinasYFuentes()} icon={waterOutline} className="icon" />
+        <IonIcon onClick={() => getCentrosDeSalud()} icon={storefront} className="icon" />
         <IonIcon icon={star} className="icon" />
         <IonIcon icon={optionsOutline} className="icon" id="filter-icon" />
       </div>
@@ -109,6 +202,7 @@ const Map = () => {
         {weatherData.position ? <SetViewOnClick coords={weatherData.position} /> : <></>}
 
         {items.length ? items.map((mark, index) => <DisplayMarkers key={index} marker={mark} />) : <></>}
+        {fuentesPiscinas.length ? fuentesPiscinas.map((mark, index) => <DisplayAdittionalMarkers key={index} indice={index} marker={mark} />) : <></>}
 
       </MapContainer>
       <section className="navigation">

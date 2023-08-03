@@ -4,6 +4,7 @@ const itemsApiControllers = require("../controllers/itemsApiControllers");
 const itemsApiRouter = express.Router();
 
 itemsApiRouter.get('/sendas', itemsApiControllers.getSendas);
+itemsApiRouter.get('/id/:id', itemsApiControllers.getItemById);
 itemsApiRouter.get('/fuentes', itemsApiControllers.getFuentes);
 itemsApiRouter.get('/centrosalud', itemsApiControllers.getCentrosSalud);
 itemsApiRouter.get('/parquesjardines', itemsApiControllers.getParquesYJardines);

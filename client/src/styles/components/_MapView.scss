@@ -30,6 +30,26 @@
     }
  }
 
+ .marker-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    h2 {
+        margin-bottom: 2%;
+        margin-top: 2%;
+        font-size: 4vw;
+        text-align: left;
+    }
+
+    span {
+        margin-bottom: 2%;
+        margin-top: 2%;
+        text-align: left;
+    }
+ }
+
  /*  div.leaflet-control-zoom.leaflet-bar.leaflet-control {
      border: none
  }
