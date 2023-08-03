@@ -12,7 +12,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const app = express();
 app.use(helmet());
-app.use(cors());
+app.use(cors({origin: "https://frontend-app-hbpdfkrhla-ew.a.run.app/"})) //Enable all CORS requests
 app.use(express.json({ extended: false }));
 app.use(cookieParser());
 
