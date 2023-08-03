@@ -19,6 +19,7 @@ const Home = () => {
         <article className="max-security">
           <h2>Máxima seguridad</h2>
           <p>Enfrenta las olas de calor con seguridad y rendimiento. Regístrate ahora y únete a Sport Cool para disfrutar de una experiencia deportiva sin preocupaciones</p>
+          <img src="./foto11.jpeg" alt="" />
           <img src="./logo/lOGO.png" alt="" className="logo-welcome" />
         </article>
       </section> : null}
@@ -28,9 +29,9 @@ const Home = () => {
         <button className="nav-link"><Link to='/eltiempo'>Pronosticos meteorologicos</Link></button>
         <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
         <button className="nav-link"><Link to='/alimentación'>alimentacion</Link></button>
-        <button className="nav-link"><Link to='/recordatoriohidratacion'>Recordatorio de hidratación</Link></button>
         <button className="nav-link"><Link to='/foro'>Comunidad de apoyo</Link></button>
-        <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
+        <button className="nav-link"><Link to='/miperfil'>Mi perfil</Link></button>
+
       </section>
 
       <section className="articles">

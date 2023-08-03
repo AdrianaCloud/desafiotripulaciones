@@ -1,0 +1,21 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+.header-box {
+    height: 100px;
+    width: 100vw;
+    background: rgb(144, 170, 228);
+    background: linear-gradient(180deg, rgba(144, 170, 228, 1) 0%, rgba(39, 81, 111, 1) 61%, rgba(2, 0, 36, 1) 100%);
+    display: flex;
+    align-items: start;
+
+    .arrow-icon {
+        font-size: 35px;
+        margin: 13px 0px 0px 18px;
+    }
+
+    .logo-header {
+        position: relative;
+        bottom: 10px;
+    }
+}

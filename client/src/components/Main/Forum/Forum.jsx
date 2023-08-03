@@ -6,6 +6,7 @@ import { UserContext } from "../../../context/userContext";
 import PublicationCard from "./PublicationCard";
 import { IonIcon } from '@ionic/react';
 import { arrowBackOutline } from "ionicons/icons";
+import HeaderTwo from '../../HeaderTwo/HeaderTwo';
 
 const Forum = () => {
   const [publication, setPublication] = useState({});
@@ -55,10 +56,9 @@ const Forum = () => {
   }
 
   return <>
-
+    <HeaderTwo />
     <section className="post-publication-form">
-      <IonIcon icon={arrowBackOutline} className="icon arrow-back" onClick={handleGoBackBtn} />
-      <h2>Publica tu comentario!</h2>
+      <h2>Comunidad y apoyo</h2>
       <form action="" onSubmit={handlePublicationForm}>
         <div className="input-text-form">
           <label htmlFor="titulo">Título</label>
@@ -67,7 +67,7 @@ const Forum = () => {
 
         <div className="input-text-form">
           <label htmlFor="texto">Descripción</label>
-          <textarea name="texto" id="texto"></textarea>
+          <textarea name="texto" id="texto" cols="40" rows="10"></textarea>
         </div>
         <button type="submit" className="form-btn">Enviar</button>
       </form>

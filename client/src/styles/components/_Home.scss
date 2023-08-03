@@ -54,9 +54,18 @@ button {
         text-align: left;
     }
 
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+
     img {
-        display: none;
+        width: 50vw;
     }
+
+    .logo-welcome {
+        width: 40%;
+    }
+
 }
 
 .welcome {
@@ -76,6 +85,7 @@ button {
     border-radius: 40px;
     padding: 10px;
     margin: 70px;
+
 
     a {
         color: white;
@@ -105,11 +115,11 @@ button {
 
         a {
             color: white;
+            text-align: center
         }
 
         article {
             @include articleDisplay;
-
         }
     }
 }
@@ -170,11 +180,20 @@ button {
 
     .max-security {
 
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 5%;
+
         img {
-            display: grid;
-            position: relative;
-            left: 150px
+            width: 90vw;
         }
+
+        .logo-welcome {
+            width: 20%;
+        }
+
     }
 
     .routes,
@@ -187,6 +206,10 @@ button {
 
         article {
             width: 100%;
+
+            a {
+                text-align: center;
+            }
         }
     }
 
