@@ -8,6 +8,7 @@ import MapView from './MapView'
 import MyProfile from './MyProfile'
 import Forum from './Forum'
 import EditProfile from './Home/MyProfile/EditProfile/EditProfile';
+import ConsejosSeguridad from './Home/ConsejosSeguridad/ConsejosSeguridad'
 import ProtectedRoutes from '../../utils/ProtectedRoutes/ProtectedRoutes';
 import RoleManager from '../../utils/RoleManager/RoleManager';
 import UserForm from './UserForm/UserForm';
@@ -121,12 +122,12 @@ const Main = () => {
         />
 
         <Route
-          path='cuestionario'
+          path='consejosseguridad'
           element={
             <ProtectedRoutes
               component={
                 <RoleManager
-                  component={<UserForm />}
+                  component={<ConsejosSeguridad />}
                   role={userData.role}
                   allowedRoles={["user"]}
                 />

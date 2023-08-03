@@ -25,7 +25,7 @@ const MyProfile = ({ onQuery }) => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await axios.get(`http://localhost:5000/api/perfil/${userData.email}`)
+      const response = await axios.get(`https://backend-app-hbpdfkrhla-ew.a.run.app/api/perfil/${userData.email}`)
       setDisplayInfo(response.data[0])
     }
 

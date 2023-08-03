@@ -1,0 +1,80 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
+.weather-container {
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            color: white;
+            font-size: 25px;
+            position: relative;
+            bottom: 56px;
+        }
+
+        form {
+            input {
+                @include input;
+                background-color: transparent;
+                border: 1px solid $neutral-light-grey;
+
+            }
+
+            .search-icon {
+                font-size: 20px;
+                background-color: $primary-light-color;
+                padding: 6px;
+                border-radius: 50%;
+                color: white;
+                position: relative;
+                top: -48px;
+                left: 180px;
+            }
+        }
+    }
+
+    .current-weather {
+        h3 {
+            margin-left: 20px;
+        }
+
+        .weather-card {
+            display: flex;
+            justify-content: start;
+            background-color: $primary-light-color;
+            margin: 20px;
+            border-radius: 10px;
+
+            div {
+                margin: 0px 20px;
+                font-weight: bold;
+                font-size: 30px;
+
+                .wind {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .weather-container {
+        .search {
+            form {
+                .search-icon {
+                    font-size: 20px;
+                    background-color: $primary-light-color;
+                    padding: 6px;
+                    border-radius: 50%;
+                    color: white;
+                    position: relative;
+                    top: 13px;
+                    left: -41px;
+                }
+            }
+        }
+    }
+}
