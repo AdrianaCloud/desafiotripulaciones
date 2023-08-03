@@ -142,7 +142,7 @@ const getCentrosSalud = async () => {
     
         const [rows] = await job.getQueryResults();
 
-        return rows.slice(10, 8)
+        return rows
         } catch (error) {
             throw error;
         }

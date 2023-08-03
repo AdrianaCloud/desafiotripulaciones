@@ -101,7 +101,7 @@ const Map = () => {
     const map = useMap();
 
     const getMarkerData = async () => {
-      const dataMarker = await axios.get(`http://localhost:5000/api/items/id/${marker.ID}`)
+      const dataMarker = await axios.get(`https://backend-app-hbpdfkrhla-ew.a.run.app//api/items/id/${marker.ID}`)
       setMarkerData(dataMarker.data[0])
     }
 
