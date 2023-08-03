@@ -1,107 +1,45 @@
+@import '../utils/variables.scss';
+@import '../utils/mixings.scss';
+
 .publication-container {
-    padding: 3%;
-    background-color: white;
-    width: 80%;
-    margin-bottom: 5%;
-    border: 0.5vw solid black;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h2 {
-        align-self: flex-start;
-        font-size: 5vw;
-        margin-bottom: 0;
-        text-align: left;
-    }
-
-    p {
-        align-self: flex-start;
-        font-size: 3.5vw;
-        text-align: left;
-    }
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .user-publication-info {
-        background-color: white;
-
         display: flex;
         flex-direction: row;
 
         img {
             width: 15%;
+            height: 15%;
             aspect-ratio: 2/2;
             object-fit: contain;
             border-radius: 40vw;
-            background-color: white;
             border: 0.5vw solid black;
-        }
-
-        .user-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-left: 3%;
-
-            h2 {
-                font-size: 4vw;
-                margin: 0;
-                font-weight: 600;
-            }
-
-            h3 {
-                font-size: 2vw;
-                margin: 0;
-                align-self: flex-start;
-                color: rgb(141, 141, 141);
-            }
         }
     }
 }
 
-
-@media (min-height: 1024px) {
+@media (min-width: 768px) {
     .publication-container {
-        align-items: start;
-        width: 70%;
-        border: 4px solid black;
-        padding: 20px 0px 0px 40px;
-        margin: 25px;
-
-        //titulo
-        h2 {
-            font-size: 1.5em;
-        }
-
-        //text
-        p {
-            font-size: 1.5em;
-        }
+        margin: 20px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
         .user-publication-info {
+            display: flex;
+            flex-direction: row;
 
             img {
-                width: 10%;
-            }
-
-            .user-info {
-
-                //persona
-                h2 {
-                    font-size: 2em;
-                }
-
-                //fecha
-                h3 {
-                    font-size: 1.5em;
-                    margin: 0;
-                    align-self: flex-start;
-                    color: rgb(141, 141, 141);
-                }
+                width: 5%;
+                height: 5%;
+                aspect-ratio: 2/2;
+                object-fit: contain;
+                border-radius: 40vw;
+                border: 0.5vw solid black;
+                margin-right: 60px
             }
         }
     }
-
 }
