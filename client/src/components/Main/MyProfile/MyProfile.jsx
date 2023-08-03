@@ -42,7 +42,7 @@ const MyProfile = ({ onQuery }) => {
       <div className="black-box">
         <IonIcon icon={listOutline} className="icon list-icon" onClick={toggleMenu} />
         <h3>{userData.user_name}</h3>
-        <img className="stats-img" src="./silluette.jpg" alt="" />
+        <img className="silluette" src="./silluette.jpg" alt="" />
       </div>
       {isMenuOpen && <NavBar onCloseMenu={handleMenuItemClick} />}
       <Link to='/editarperfil'>
@@ -54,7 +54,7 @@ const MyProfile = ({ onQuery }) => {
         <p><span>Ciudad:</span> {displayInfo?.ciudad ? displayInfo.ciudad : ''}</p>
         <p><span>5</span> Seguidos:<span>12</span> Seguidores</p>
       </section>
-      <img src="./Group39.png" alt="" />
+      <img className="stats-img" src="./Group39.png" alt="" />
       <section className="info">
         <p className="info-title">Nivel de actividad</p>
         <p className="info-container">

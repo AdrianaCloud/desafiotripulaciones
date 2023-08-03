@@ -2,112 +2,89 @@
 @import '../utils/mixings.scss';
 
 .profile-container {
+    background-color: $neutral;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .black-box {
-        width: 100%;
         height: 100px;
-        background: rgb(129, 182, 52);
-        background: linear-gradient(180deg, rgba(129, 182, 52, 1) 0%, rgba(59, 121, 9, 1) 52%, rgba(2, 0, 36, 1) 100%);
-
-
-        .list-icon {
-            position: relative;
-            top: 25px;
-            left: 300px;
-        }
+        width: 100vw;
+        background: rgb(144, 170, 228);
+        background: linear-gradient(180deg, rgba(144, 170, 228, 1) 0%, rgba(39, 81, 111, 1) 61%, rgba(2, 0, 36, 1) 100%);
 
         h3 {
             color: white;
-            position: relative;
-            top: -20px;
-            left: 160px;
+            margin: 38px 0px 0px 126px;
         }
 
-        img {
+        .silluette {
             width: 65px;
             height: 60px;
             border-radius: 50%;
-            position: relative;
-            top: -50px;
-            left: 4px;
             border: 1px solid black;
+            margin: -27px 0px 0px 26px;
         }
+
+    }
+
+    .edit-profile-btn {
+        margin: 20px 0px 0px 250px
+    }
+
+    .heading-info {
+        margin-left: 20px;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .info {
+        background-color: rgb(213, 213, 213);
+        width: 80%;
+        padding: 20px;
+        border-radius: 30px 30px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+
+        .info-container {
+            background-color: rgb(170, 170, 170);
+            border-radius: 20px;
+            min-height: 30px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .stats-img {
+        display: none;
+    }
+
+    .profile-container {
+        background-color: $neutral;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .heading-info {
+        margin-bottom: 80px;
     }
 
     .edit-profile-btn {
         position: relative;
-        left: 220px;
-        margin-top: 20px;
-    }
-
-    .heading-info {
-        display: flex;
-        flex-direction: column;
-        margin: 20px 20px;
-
-        p {
-            span {
-                font-weight: bold;
-            }
-        }
-    }
-
-    img {
-        width: 90%;
-        margin: 0 20px;
+        left: 1900px;
+        padding: 12px 20px;
     }
 
     .info {
-        display: flex;
-        flex-direction: column;
-
-
-        background-color: rgb(207, 207, 207);
-        border-radius: 30px 30px 0px 0px;
-        margin-top: 20px;
-        padding-bottom: 40px;
-
-        p {
-            border-radius: 10px;
-            margin: 5px;
-        }
-
-        .info-title {
-            margin-left: 10px;
-        }
-
-        .info-container {
-            background-color: rgb(163, 163, 163);
-            border-radius: 20px;
-            padding: 10px 20px;
-            width: 80%;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-    }
-
-    .info :first-child {
-        margin-top: 40px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .info {
-        margin: -60px 40px 0px;
-    }
-
-    .profile-container {
-        .black-box {
-            h3 {
-                top: 17px;
-                left: 245px;
-            }
-
-            img {
-                top: -14px;
-                left: 4px;
-
-            }
-        }
+        margin: auto;
     }
 }

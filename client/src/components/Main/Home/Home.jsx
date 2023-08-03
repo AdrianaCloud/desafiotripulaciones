@@ -19,6 +19,7 @@ const Home = () => {
         <article className="max-security">
           <h2>Máxima seguridad</h2>
           <p>Enfrenta las olas de calor con seguridad y rendimiento. Regístrate ahora y únete a Sport Cool para disfrutar de una experiencia deportiva sin preocupaciones</p>
+          <img src="./foto11.jpeg" alt="" />
           <img src="./logo/lOGO.png" alt="" className="logo-welcome" />
         </article>
       </section> : null}
