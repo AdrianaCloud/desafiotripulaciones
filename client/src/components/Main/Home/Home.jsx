@@ -28,9 +28,9 @@ const Home = () => {
         <button className="nav-link"><Link to='/eltiempo'>Pronosticos meteorologicos</Link></button>
         <button className="nav-link"><Link to='/mapa'>Mapa de ruta</Link></button>
         <button className="nav-link"><Link to='/alimentación'>alimentacion</Link></button>
-        <button className="nav-link"><Link to='/recordatoriohidratacion'>Recordatorio de hidratación</Link></button>
         <button className="nav-link"><Link to='/foro'>Comunidad de apoyo</Link></button>
-        <button className="nav-link"><Link to='/recursosnaturales'>Recursos naturales</Link></button>
+        <button className="nav-link"><Link to='/miperfil'>Mi perfil</Link></button>
+
       </section>
 
       <section className="articles">

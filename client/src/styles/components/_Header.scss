@@ -7,7 +7,7 @@ header {
     align-items: center;
 
     img {
-        width: 30vw;
+        width: 10vw;
         margin: 30px;
     }
 }
@@ -27,27 +27,34 @@ header {
 }
 
 @media (max-width: 460px) {
-    .button-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-left: -10px;
+    header {
+        img {
+            width: 30vw;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-left: -10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            //centrarlo
+        }
+
+        .new-user {
+            font-size: 10px;
+        }
+
+        .list-icon {
+            visibility: visible;
+            scale: 3.5;
+            margin: 20px
+        }
     }
 
-    h1 {
-        font-size: 20px;
-        text-align: center;
-        //centrarlo
-    }
-
-    .new-user {
-        font-size: 10px;
-    }
-
-    .list-icon {
-        visibility: visible;
-        scale: 3.5;
-        margin: 20px
-    }
 }

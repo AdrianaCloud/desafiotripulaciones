@@ -100,7 +100,7 @@ const EditProfile = ({ query }) => {
   return <>
     <section className="edit-profile-container">
       <div className="black-box">
-        <h3>Eustaquio Abichuela</h3>
+        <h3>{userData.user_name}</h3>
         <img className="stats-img" src="./silluette.jpg" alt="" />
       </div>
       <h2>Modifica tu perfil</h2>
